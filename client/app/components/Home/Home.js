@@ -4,9 +4,6 @@ import {
   getFromStorage,
   setInStorage,
 } from '../../utils/storage'
-// import { throws } from 'assert';
-// import { threadId } from 'worker_threads';
-// import { SCHED_NONE } from 'cluster';
 
 class Home extends Component {
   constructor(props) {
@@ -244,76 +241,148 @@ class Home extends Component {
     if (!token) {
       return (
         <div>
-          <div>
+
+          <div className='login form'>
             {
               (signInError) ? (
                 <p>{signInError}</p>
               ) : (null)
             }
-            <p>Sign In</p>
-            <input
-              type='email'
-              placeholder='Email'
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
-            />
-            <br />
-            <input
-              type='password'
-              placeholder='Password'
-              value={signInPassword}
-              onChange={this.onTextboxChangeSignInPassword}
-            />
-            <br />
-            <button onClick={this.onSignIn}>Sign In</button>
+            <div >
+            <h2 className='form__item login__title'>Sign In</h2>
+            </div>
+            <div className='form__item'>
+              <div className='input'>
+                <div class='input__label'>
+                  <label htmlFor='login'></label>
+                </div>
+                <div class='input__field-wrapper'>
+                  <input
+                    name='login'
+                    class='input__field'
+                    type='email'
+                    placeholder='Email'
+                    value={signInEmail}
+                    onChange={this.onTextboxChangeSignInEmail}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className='form__item'>
+              <div className='input'>
+                <div className='input__label'>
+                  <label htmlFor='password'></label>
+                </div>
+                <div className='input__field-wrapper'>
+                  <input
+                    name='password'
+                    className='input__field'
+                    type='password'
+                    placeholder='Password'
+                    value={signInPassword}
+                    onChange={this.onTextboxChangeSignInPassword}
+                  />
+                </div>
+                <div className='form__item'>
+                  <button className='button button__login' onClick={this.onSignIn}>Sign In</button>
+                </div>
+              </div>
+            </div>
           </div>
-          <br />
-          <br />
-          <div>
+
+          <div className='signup form'>
             {
               (signUpError) ? (
                 <p>{signUpError}</p>
               ) : (null)
             }
-            <p>Sign Up</p>
-            <input
-              type='text'
-              placeholder='First Name'
-              value={signUpFirstName}
-              onChange={this.onTextboxChangeSignUpFirstName}
-            />
-            <br />
-            <input
-              type='text'
-              placeholder='Last Name'
-              value={signUpLastName}
-              onChange={this.onTextboxChangeSignUpLastName}
-            />
-            <br />
-            <input
-              type='email'
-              placeholder='Email'
-              value={signUpEmail}
-              onChange={this.onTextboxChangeSignUpEmail}
-            />
-            <br />
-            <input
-              type='password'
-              placeholder='Password'
-              value={signUpPassword}
-              onChange={this.onTextboxChangeSignUpPassword}
-            />
-            <br />
-            <button onClick={this.onSignUp}>Sign Up</button>
-          </div>
-        </div>
+            <h2 className='form__item signup__title'>Sign Up</h2>
+
+            <div className='form__item'>
+              <div className='input'>
+                <div className='input__label'>
+                  <label htmlFor="firstName">First Name</label>
+                </div>
+                <div className='input__field-wrapper'>
+                  <input
+                    name='firstName'
+                    className='input__field'
+                    type='text'
+                    placeholder='First Name'
+                    noValidate
+                    value={signUpFirstName}
+                    onChange={this.onTextboxChangeSignUpFirstName}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className='form__item'>
+              <div className='input'>
+                <div className='input__label'>
+                  <label htmlFor="lastName">First Name</label>
+                </div>
+                <div className='input__field-wrapper'>
+                  <input
+                    name='lastName'
+                    className='input__field'
+                    type='text'
+                    placeholder='Last Name'
+                    value={signUpLastName}
+                    onChange={this.onTextboxChangeSignUpLastName}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className='form__item'>
+              <div className='input'>
+                <div className='input__label'>
+                  <label htmlFor="email">Email</label>
+                </div>
+                <div className='input__field-wrapper'>
+                  <input
+                    name='email'
+                    type='email'
+                    className='input__field'
+                    placeholder='Email'
+                    value={signUpEmail}
+                    onChange={this.onTextboxChangeSignUpEmail}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className='form__item'>
+              <div className='input'>
+                <div className='input__label'>
+                  <label htmlFor="email">Password</label>
+                </div>
+                <div className='input__field-wrapper'></div>
+                <input
+                  name="email"
+                  type='password'
+                  placeholder='Password'
+                  value={signUpPassword}
+                  onChange={this.onTextboxChangeSignUpPassword}
+                />
+                <div className='form__item'>
+                  <button className='button button__signup' onClick={this.onSignUp}>Sign Up</button>
+                </div>
+              </div >
+            </div >
+          </div >
+        </div >
       )
     }
 
     return (
       <div>
         <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
+        <div className='form__item'>
+          <button className='button button__logout' onClick={this.logout}>Logout</button>
+        </div>
       </div>
     )
   }

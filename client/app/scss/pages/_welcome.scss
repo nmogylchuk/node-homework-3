@@ -1,0 +1,43 @@
+.welcome {
+  width: 100%;
+  height: $screen-height-desktops;
+
+  &__description {
+    text-align: center;
+    line-height: 1.5;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    border: 1px solid $yellow;
+    box-shadow: $box-shadow-yellow;
+    padding: 50px;
+    margin: 20px;
+    &:hover {
+      box-shadow: $box-shadow-red;
+      border: 1px solid $red;
+    }
+    & .item {
+      &__type {
+        font-size: 5em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
