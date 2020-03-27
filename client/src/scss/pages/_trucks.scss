@@ -1,0 +1,40 @@
+.truck {
+  width: 100%;
+  height: $screen-height-desktops;
+
+  &__description {
+    text-align: center;
+    line-height: 0.8;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  &__parameters {
+    margin: 20px 0;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    min-width: 300px;
+    border: 1px solid $yellow;
+    box-shadow: $box-shadow-yellow;
+    padding: 10px;
+    margin: 20px;
+    &:hover {
+      box-shadow: $box-shadow-red;
+      border: 1px solid $red;
+    }
+  }
+  &__maker,
+  &__model {
+    text-align: center;
+    color: $yellow;
+  }
+}
