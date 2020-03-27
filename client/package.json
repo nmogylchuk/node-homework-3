@@ -1,6 +1,13 @@
 {
   "name": "example-create-react-app-express",
   "version": "0.1.0",
+  "description": "node-homework-3 project",
+  "author": "Nataliia Mogylchuk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmogylchuk/node-homework-3.git"
+  },
+  "license": "Apache 2.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
