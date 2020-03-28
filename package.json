@@ -9,11 +9,16 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "react-router-dom": "^5.1.2"
-  },
-  "devDependencies": {
+    "mongoose": "^5.9.6",
+    "react-router-dom": "^5.1.2",
     "concurrently": "^4.0.1",
     "node-sass": "^4.13.1",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.0",
+    "express-validator": "^6.4.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.2"
   }
 }
