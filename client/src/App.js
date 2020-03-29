@@ -31,15 +31,15 @@ function App() {
   // const isAuthenticatedShipper = false;
 
   const {token, login, logout, userId, userType} = useAuth();
-  console.log("token: " + token);
-  console.log("userId: " + userId);
-  console.log("userType: " + userType);
+  // console.log("token: " + token);
+  // console.log("userId: " + userId);
+  // console.log("userType: " + userType);
 
   const isAuthenticated = !!token;
   //const isAuthenticated = false;
   const routes = useRoutes(isAuthenticated, userType);
 
-  console.log("isAuthenticated: " + isAuthenticated);
+  // console.log("isAuthenticated: " + isAuthenticated);
 
   return (
     <AuthContext.Provider value={{token, login, logout, userId, userType, isAuthenticated}}>

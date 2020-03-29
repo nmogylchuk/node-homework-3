@@ -2,7 +2,7 @@ import React from "react";
 // import shipper_photo from './../../images/shipper/shipper_photo.png';
 import { NavLink } from 'react-router-dom';
 
-const ProfileShipper = () => {
+const Profile = () => {
     return (
         <div>
             <div className="block">
@@ -43,4 +43,4 @@ const ProfileShipper = () => {
     )
 }
 
-export default ProfileShipper;
+export default Profile;
