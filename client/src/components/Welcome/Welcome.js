@@ -11,10 +11,10 @@ const Welcome = (props) => {
                     <div className="item__type">Driver</div>
                     <div className='welcome__links'>
                         <button className="welcome__button button">
-                            <NavLink to={{pathname: '/login', userType: 'driver'}} className="button__link">Sign In</NavLink>
+                            <NavLink to='/signin' className="button__link">Sign In</NavLink>
                         </button>
                         <button className="welcome__button button">
-                            <NavLink to={{pathname: '/signup', userType: 'driver'}} className="button__link">Sign Up</NavLink>
+                            <NavLink to={{ pathname: '/signup', userType: 'driver' }} className="button__link">Sign Up</NavLink>
                         </button>
                     </div>
                 </div>
@@ -22,10 +22,10 @@ const Welcome = (props) => {
                     <div className="item__type">Shipper</div>
                     <div className='welcome__links'>
                         <button className="welcome__button button">
-                            <NavLink to={{pathname: '/login', userType: 'shipper'}} className="button__link" >Sign In</NavLink>
+                            <NavLink to='/signin' className="button__link" >Sign In</NavLink>
                         </button>
                         <button className="welcome__button button">
-                            <NavLink to={{pathname: '/signup', userType: 'shipper'}} className="button__link" >Sign Up</NavLink>
+                            <NavLink to={{ pathname: '/signup', userType: 'shipper' }} className="button__link" >Sign Up</NavLink>
                         </button>
                     </div>
                 </div>

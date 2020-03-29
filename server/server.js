@@ -3,11 +3,17 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('config');
 
+const log = require('./routes/middleware/log');
+const auth = require('./routes/middleware/auth');
+
+
 const app = express();
 const PORT = config.get('port') || 5000;
 
+app.use(log);
+// app.use(auth);
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/api/auth', require('./routes/auth'));
 

@@ -11,7 +11,7 @@ import React from "react";
 
 
 
-const Driver = () => {
+const Shipper = () => {
     return (
 
         <div>
@@ -20,4 +20,4 @@ const Driver = () => {
     )
 }
 
-export default Driver;
+export default Shipper;
