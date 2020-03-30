@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -17,7 +17,12 @@ const Logout = () => {
     };
 
     return (
-        <button onClick={logoutHandler}>Log out</button>
+        <div className="logout">
+            <div className="logout__description">Are you sure you want to log out?</div>
+            <div className='button__list'>
+                <button className='logout__button button' onClick={logoutHandler}>Log out</button>
+            </div>
+        </div>
     );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-//import logo from './../images/logo';
+import logo from '../../images/logo.png';
 
 const HeaderDriver = (props) => {
     return (
@@ -8,7 +8,7 @@ const HeaderDriver = (props) => {
             <div className="header__container block">
                 <div className="header__logo logo">
                     <NavLink to="/driver" className="logo__link">
-                        <img alt="Logo" className="logo__image"></img>
+                        <img src={logo} alt="Logo" className="logo__image"></img>
                     </NavLink>
                 </div>
                 <div className="header__spacer"></div>

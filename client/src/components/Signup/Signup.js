@@ -100,8 +100,8 @@ export const Signup = (props) => {
                             placeholder='Password'
                             value={form.password}
                             onChange={changeHandler} />
-                  <div className='form__item'>
-                            <button className='button button__signup' onClick={signupHandler}>Sign Up</button>
+                        <div className='submit__item'>
+                            <button className='signup__button button' onClick={signupHandler}>Sign Up</button>
                         </div>
                     </div >
                 </div >

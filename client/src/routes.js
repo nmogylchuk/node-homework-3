@@ -5,9 +5,11 @@ import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
 import Logout from './components/Logout/Logout';
 
-import Driver from './components/Driver/Driver';
+import DriverWelcome from './components/Driver/Welcome';
 import DriverProfile from './components/Driver/Profile';
-import DriverTrucks from './components/Driver/Trucks';
+import DriverPassword from './components/Driver/Password';
+import DriverTrucks from './components/Driver/Trucks/Trucks';
+import DriverCreateTruck from './components/Driver/Trucks/CreateTruck';
 
 import Shipper from './components/Shipper/Shipper';
 import ShipperProfile from './components/Shipper/Profile';
@@ -20,9 +22,11 @@ export const useRoutes = (isAuthenticated, userType) => {
         if (userType === "driver") {
             return (
                 <Switch>
-                    <Route exact path="/driver" component={Driver} />
+                    <Route exact path="/driver" component={DriverWelcome} />
                     <Route exact path="/driver/profile" component={DriverProfile} />
+                    <Route exact path="/driver/profile/password" component={DriverPassword} />
                     <Route exact path="/driver/trucks" component={DriverTrucks} />
+                    <Route exact path="/driver/truck/create" component={DriverCreateTruck} />
                     <Route exact path="/logout" component={Logout}/>
                     <Redirect to="/driver" />
                 </Switch>

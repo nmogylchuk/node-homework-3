@@ -1,6 +1,17 @@
 .truck {
   width: 100%;
-  height: $screen-height-desktops;
+  &::after {
+    content: "";
+    background-image: url("../../../images/welcome_background.jpg");
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+    }
 
   &__description {
     text-align: center;
@@ -27,6 +38,7 @@
     box-shadow: $box-shadow-yellow;
     padding: 10px;
     margin: 20px;
+    background: rgba(0, 0, 0, 0.5);
     &:hover {
       box-shadow: $box-shadow-red;
       border: 1px solid $red;
@@ -37,4 +49,27 @@
     text-align: center;
     color: $yellow;
   }
+
+  &__button {
+  min-width: 90px;
+  min-height: 20px;
+  padding: 10px;
+  margin: 5px auto;
 }
+}
+
+.button__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.button-create {
+  min-width: 140px;
+  min-height: 40px;
+  padding: 10px;
+  margin: 10px auto;
+}
+

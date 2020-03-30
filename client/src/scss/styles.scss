@@ -7,10 +7,18 @@
 //core
 @import './core/_header';
 @import './core/_generic';
+@import './core/_footer';
 
 //pages
-@import './pages/_login';
-@import './pages/_signup';
 @import './pages/_welcome';
-@import './pages/_trucks';
-@import './pages/_driver';
+@import './pages/_signin';
+@import './pages/_signup';
+@import './pages/_logout';
+
+//pages/driver
+@import './pages/driver/_driverWelcome';
+@import './pages/driver/_driverProfile';
+@import './pages/driver/_driverTrucks';
+@import './pages/driver/_driverCreateTruck';
+
+//pages/shipper

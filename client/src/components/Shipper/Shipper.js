@@ -15,7 +15,7 @@ const Shipper = () => {
     return (
 
         <div>
-            <p>Welcome to driver page!</p>
+            <p>Welcome to shipper page!</p>
         </div>
     )
 }

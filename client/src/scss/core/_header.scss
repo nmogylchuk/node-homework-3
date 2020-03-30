@@ -1,8 +1,6 @@
-
 .header {
   background-color: $background-color;
   width: 100%;
-  height: $header-height-desktops;
   font-size: 1.2rem;
   text-transform: uppercase;
   color: $yellow;
@@ -12,16 +10,15 @@
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    margin: 20px;
   }
 
   &__spacer {
     flex: 1;
   }
 
-  .logo {
-    height: 100%;
-    width: 100%;
+  .logo__image {
+    height: 80%;
+    width: 80%;
 
     &__link {
       height: 100%;
@@ -50,7 +47,6 @@
     align-items: center;
     justify-content: space-between;
     &:hover {
-      text-decoration: underline;
       color: $red;
     }
   }

@@ -29,11 +29,10 @@ const Signin = () => {
   };
 
   return (
-    <div className='login form'>
-      <h2 className='form__item login__title title'>Sign In</h2>
+    <div className='signin form'>
+      <h2 className='form__item signin__title title'>Sign In</h2>
       <div className='form__wrapper'>
         <div className='form__item'>
-
           <div className='input'>
             <div class='input__label'>
               <label htmlFor='email'>Email</label>
@@ -64,8 +63,8 @@ const Signin = () => {
                 value={form.password}
                 onChange={changeHandler} />
             </div>
-            <div className='form__item'>
-              <button className='button button__login' onClick={signinHandler}>Sign In</button>
+            <div className='submit__item'>
+              <button className='signin__button button' onClick={signinHandler}>Sign In</button>
             </div>
           </div>
         </div>
