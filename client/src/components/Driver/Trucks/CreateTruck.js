@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useState, useContext } from 'react';
+import { useHttp } from '../../../hooks/http.hook';
+import { useHistory } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
 
 const DriverCreateTruck = (props) => {
+
+    const history = useHistory();
+    const auth = useContext(AuthContext);
+    const { request } = useHttp();
+    const [form, setForm] = useState({
+        brand: '',
+        model: '',
+        year: '',
+        colour: '',
+        gearbox: '',
+        engine: '',
+        mileage: ''
+    });
+
+    const changeHandler = event => {
+        setForm({ ...form, [event.target.name]: event.target.value });
+    }
+
+    const createTruckHandler = async () => {
+        try {
+            const data = await request('/api/trucks', 'POST', { ...form }, {
+                Authorization: `Bearer ${auth.token}`
+            });
+            console.log("createTruckHandler data: " + JSON.stringify(data));
+            history.push("/driver/trucks");
+        }
+        catch (error) {
+            console.log('Carch error on creating Truck: ' + error)
+        };
+    };
+
     return (
         <div className='truck-create form'>
             <h2 className='form__item truck-create__title title'>Create Truck</h2>
@@ -17,9 +51,8 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Brand'
                                 noValidate
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.brand}
+                                onChange={changeHandler} />
                         </div>
                     </div>
                     <div className='input'>
@@ -33,9 +66,8 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Model'
                                 noValidate
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.model}
+                                onChange={changeHandler} />
                         </div>
                     </div>
                     <div className='input'>
@@ -49,9 +81,8 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Year'
                                 noValidate
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.year}
+                                onChange={changeHandler} />
                         </div>
                     </div>
                     <div className='input'>
@@ -65,16 +96,24 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Colour'
                                 noValidate
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.colour}
+                                onChange={changeHandler} />
                         </div>
                     </div>
-                    <div>
-                        <select>
-                            <option>MG</option>
-                            <option>AG</option>
-                        </select>
+                    <div className='input'>
+                        <div className='input__label'>
+                            <label htmlFor="truck-create__gearbox">Gearbox</label>
+                        </div>
+                        <div className='input__field-wrapper'>
+                            <input
+                                name='gearbox'
+                                className='input__field'
+                                type='text'
+                                placeholder='Gearbox'
+                                noValidate
+                                value={form.gearbox}
+                                onChange={changeHandler} />
+                        </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
@@ -87,9 +126,8 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Engine'
                                 noValidate
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.engine}
+                                onChange={changeHandler} />
                         </div>
                     </div>
                     <div className='input'>
@@ -103,12 +141,11 @@ const DriverCreateTruck = (props) => {
                                 type='text'
                                 placeholder='Mileage'
                                 pattern='^[ 0-9]+$'
-                            // value={}
-                            // onChange={changeHandler} 
-                            />
+                                value={form.mileage}
+                                onChange={changeHandler} />
                         </div>
                         <div className="submit__item">
-                            <button className="truck-create__button button">Create Truck</button>
+                            <button className="truck-create__button button" onClick={createTruckHandler}>Create Truck</button>
                         </div>
                     </div>
                 </div>

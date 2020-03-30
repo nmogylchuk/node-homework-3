@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthContext';
 const Signin = () => {
   const history = useHistory();
   const auth = useContext(AuthContext);
-  const { loading, request } = useHttp();
+  const { request } = useHttp();
   const [form, setForm] = useState({
     email: '',
     password: '',
