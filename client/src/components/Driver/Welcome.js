@@ -16,6 +16,8 @@ const DriverWelcome = () => {
                     <li className="advantages__item"><b className="advantages__item-mark">Build</b> stronger relationships with the local community with each job</li>
                     <li className="advantages__item"><b className="advantages__item-mark">Customize</b> your truck with tons of parts and tune it to your liking</li>
                     <li className="advantages__item"><b className="advantages__item-mark">Navigate</b> through beautiful landscapes and fully explorable cities</li>
+                    <li className="advantages__item"><b className="advantages__item-mark">Get</b>new jobs and utilise empty capacity</li>
+                    <li className="advantages__item"><b className="advantages__item-mark">Daily</b>notifications about return loads</li>
                 </ul>
                 <div className="driver-welcome__figure">
                     <img className="driver-welcome__photo" src={truck_photo} alt="truck photo" />

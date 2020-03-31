@@ -11,8 +11,11 @@ import DriverPassword from './components/Driver/Password';
 import DriverTrucks from './components/Driver/Trucks/Trucks';
 import DriverCreateTruck from './components/Driver/Trucks/CreateTruck';
 
-import Shipper from './components/Shipper/Shipper';
+import ShipperWelcome from './components/Shipper/Welcome';
 import ShipperProfile from './components/Shipper/Profile';
+import ShipperLoads from './components/Shipper/Loads/Loads';
+import ShipperLoad from './components/Shipper/Loads/Load';
+import ShipperCreateLoad from './components/Shipper/Loads/CreateLoad';
 
 export const useRoutes = (isAuthenticated, userType) => {
     console.log("userType: " + userType);
@@ -36,8 +39,11 @@ export const useRoutes = (isAuthenticated, userType) => {
         if (userType === "shipper") {
             return (
                 <Switch>
-                    <Route exact path="/shipper" component={Shipper} />
+                    <Route exact path="/shipper" component={ShipperWelcome} />
                     <Route exact path="/shipper/profile" component={ShipperProfile} />
+                    <Route exact path="/shipper/loads" component={ShipperLoads} />
+                    <Route exact path="/shipper/load/create" component={ShipperCreateLoad} />
+                    <Route exact path="/shipper/load/:id" component={ShipperLoad} />
                     <Route exact path="/logout" component={Logout}/>
                     <Redirect to="/shipper" />
                 </Switch>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-//import logo from './../images/logo';
+import logo from '../../images/logo.png';
 
 const HeaderShipper = (props) => {
     return (
         <div className="header">
             <div className="header__container block">
                 <div className="header__logo logo">
-                    <NavLink to="/shipper" className="logo__link">
-                        <img alt="Logo" className="logo__image"></img>
+                    <NavLink to="/driver" className="logo__link">
+                        <img src={logo} alt="Logo" className="logo__image"></img>
                     </NavLink>
                 </div>
                 <div className="header__spacer"></div>

@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/trucks', require('./routes/trucks'));
+app.use('/api/loads', require('./routes/loads'));
 
 async function start() {
     try {
