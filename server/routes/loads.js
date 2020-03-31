@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
             let loadsRes = loads.map(function (load) {
                 return {
                     id: load.id,
-                    loadname: load.loadname,
+                    loadName: load.loadName,
                     volume: load.volume,
                     truckType: load.truckType,
                     weight: load.weight
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', [
-    // check('loadname', 'Load Name from must contain more than 3 symbols').isLength({ min: 3 }),
+    check('loadName', 'Load Name from must contain more than 3 symbols').isLength({ min: 3 }),
     check('countryFrom', 'Country from must contain more than 3 symbols').isLength({ min: 3 }),
     check('countryTo', 'Country to must contain more than 3 symbols').isLength({ min: 3 }),
     check('cityFrom', 'City From must contain more than 3 symbols').isLength({ min: 3 }),
@@ -39,8 +39,8 @@ router.post('/', [
     check('dateFrom', 'Date From must contain more than 3 symbols').isLength({ min: 3 }),
     check('dateTo', 'Date To must contain more than 3 symbols').isLength({ min: 3 }),
     check('weight', 'Weight must contain more than 3 symbols').isLength({ min: 3 }),
-    // check('volume', 'Volume must contain more than 3 symbols').isLength({ min: 3 }),
-    // check('truckType', 'Truck Type must contain more than 3 symbols').isLength({ min: 3 })
+    check('volume', 'Volume must contain more than 3 symbols').isLength({ min: 3 }),
+    check('truckType', 'Truck Type must contain more than 3 symbols').isLength({ min: 3 })
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -52,10 +52,10 @@ router.post('/', [
             })
         }
 
-        let { loadname, countryFrom, countryTo, cityFrom, cityTo, dateFrom, dateTo, weight, volume, truckType } = req.body;
+        let { loadName, countryFrom, countryTo, cityFrom, cityTo, dateFrom, dateTo, weight, volume, truckType } = req.body;
         console.log("contryFrom: " + countryFrom);
 
-        const load = new Load({ loadname, countryFrom, countryTo, cityFrom, cityTo, dateFrom, dateTo, weight, volume, truckType, user: req.user.userId });
+        const load = new Load({ loadName, countryFrom, countryTo, cityFrom, cityTo, dateFrom, dateTo, weight, volume, truckType, user: req.user.userId });
         await load.save();
         res.status(201).json({ message: "The load has been created" });
     } catch (error) {

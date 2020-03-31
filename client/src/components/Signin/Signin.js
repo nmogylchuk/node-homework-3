@@ -34,14 +34,14 @@ const Signin = () => {
       <div className='form__wrapper'>
         <div className='form__item'>
           <div className='input'>
-            <div class='input__label'>
+            <div className='input__label'>
               <label htmlFor='email'>Email</label>
             </div>
-            <div class='input__field-wrapper'>
+            <div className='input__field-wrapper'>
               <input
                 name='email'
                 type='email'
-                class='input__field'
+                className='input__field'
                 placeholder='Email'
                 value={form.email}
                 onChange={changeHandler} />

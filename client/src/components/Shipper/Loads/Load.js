@@ -1,7 +1,27 @@
 import React, { useContext, useState, useEffect, useCallback } from 'react';
+import { useHttp } from '../../../hooks/http.hook';
+import { AuthContext } from '../../../context/AuthContext';
 import { NavLink } from 'react-router-dom';
 
-const Load = ({ load }) => {
+const Load = (props) => {
+    const auth = useContext(AuthContext);
+    const { request } = useHttp();
+    const [load, setLoad] = useState([]);
+
+    const getLoad = useCallback(async () => {
+        try {
+            let loadId = props.match.params.id;
+            const data = await request('/api/loads?id=' + loadId, 'GET', null,
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            setLoad(data);
+        } catch (e) { }
+    }, [auth.token, request]);
+
+    useEffect(() => {
+        getLoad();
+    }, [getLoad]);
+
     return (
         <div className="load">
             <div className="load__description">
@@ -64,13 +84,13 @@ const Load = ({ load }) => {
                     </div>
                 </div>
                 <div className="button__list">
-                    <NavLink to="/shipper/load/post" class="button__link">
+                    <NavLink to="/shipper/load/post" className="button__link">
                         <button className="load__button button-post button">Asign</button>
                     </NavLink>
-                    <NavLink to="/shipper/load/update" class="button__link">
+                    <NavLink to="/shipper/load/update" className="button__link">
                         <button className="load__button button-update button">Update</button>
                     </NavLink>
-                    <NavLink to="/shipper/load/delete" class="button__link">
+                    <NavLink to="/shipper/load/delete" className="button__link">
                         <button className="load__button button-delete button">Delete</button>
                     </NavLink>
                 </div>

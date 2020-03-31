@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoadView } from './LoadView';
 
-export const LoadsList = ({ loads = [] }) => {
+const LoadsList = ({ loads = [] }) => {
     if (loads === []) {
         return (
             <div className="load__list">
@@ -11,7 +11,7 @@ export const LoadsList = ({ loads = [] }) => {
     }
 
     const LoadsList = loads.map((load) => {
-        return (<LoadView load={load} />);
+        return (<LoadView key={load.id} load={load} />);
     });
 
     return (
@@ -20,3 +20,5 @@ export const LoadsList = ({ loads = [] }) => {
         </div>
     );
 };
+
+export default LoadsList;

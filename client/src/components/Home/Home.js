@@ -253,13 +253,13 @@ class Home extends Component {
             </div>
             <div className='form__item'>
               <div className='input'>
-                <div class='input__label'>
+                <div className='input__label'>
                   <label htmlFor='login'></label>
                 </div>
-                <div class='input__field-wrapper'>
+                <div className='input__field-wrapper'>
                   <input
                     name='login'
-                    class='input__field'
+                    className='input__field'
                     type='email'
                     placeholder='Email'
                     value={signInEmail}

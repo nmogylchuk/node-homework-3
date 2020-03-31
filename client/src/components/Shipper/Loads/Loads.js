@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 import { AuthContext } from '../../../context/AuthContext';
 import { NavLink } from 'react-router-dom';
-import { LoadsList } from './LoadsList';
+import LoadsList from './LoadsList';
 
 const Loads = (props) => {
     const auth = useContext(AuthContext);
@@ -26,7 +26,7 @@ const Loads = (props) => {
         <div className="load">
             <h2 className="load__title title">Available Loads</h2>
             <div className="button__list">
-                <NavLink to="/shipper/load/create" class="button__link">
+                <NavLink to="/shipper/load/create" className="button__link">
                     <button className="load__button button-create button">Create Load</button>
                 </NavLink>
             </div>

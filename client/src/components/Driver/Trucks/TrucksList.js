@@ -11,7 +11,7 @@ export const TrucksList = ({ trucks = [] }) => {
     }
 
     const TrucksList = trucks.map((truck) => {
-        return (<Truck truck={truck} />);
+        return (<Truck key={truck._id} truck={truck} />);
     });
 
     return (

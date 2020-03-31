@@ -26,7 +26,7 @@ const Trucks = (props) => {
         <div className="truck">
             <h2 className="truck__title title">Available Trucks</h2>
             <div className="button__list">
-                <NavLink to="/driver/truck/create" class="button__link">
+                <NavLink to="/driver/truck/create" className="button__link">
                     <button className="truck__button button-create button">Create Truck</button>
                 </NavLink>
             </div>

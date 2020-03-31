@@ -20,7 +20,7 @@
 //                 +38 067 224 43 75</a>
 //             </div>
 //             <div className="footer__address">
-//               <i class="fas fa-map-marker-alt"></i>
+//               <i className="fas fa-map-marker-alt"></i>
 //               Ukraine, Kiev</div>
 //           </div>
 //           <div className="footer__item footer__network">

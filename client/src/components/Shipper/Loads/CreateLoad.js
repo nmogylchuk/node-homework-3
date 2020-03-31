@@ -31,7 +31,7 @@ const ShipperCreateLoad = (props) => {
                 Authorization: `Bearer ${auth.token}`
             });
             console.log("createLoadHandler data: " + JSON.stringify(data));
-            history.push("/shipper/loadsview");
+            history.push("/shipper/loads");
         }
         catch (error) {
             console.log('Carch error on creating Load: ' + error)
