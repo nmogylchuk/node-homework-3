@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
+import { useHttp } from '../../hooks/http.hook';
+import { AuthContext } from '../../context/AuthContext';
 import driver_avatar from '../../images/driver/driver_avatar.png';
 
 const ProfileDriver = () => {
+
+    const auth = useContext(AuthContext);
+    const { request } = useHttp();
+    const [profile, setProfile] = useState([]);
+
+    const getProfile = useCallback(async () => {
+        try {
+            const data = await request('/api/user', 'GET', null,
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            setProfile(data);
+        } catch (e) { }
+    }, [auth.token, request]);
+
+    useEffect(() => {
+        getProfile();
+    }, [getProfile]);
+
     return (
             <div className="block">
                 <div className="driver-profile">
@@ -16,19 +36,19 @@ const ProfileDriver = () => {
                         <div className="driver-profile__info">
                             <p className="driver-profile__characteristic">
                                 <span className="driver-profile__name">Name:</span>
-                                {/* {name} */}
+                                {profile.fistName}
                             </p>
                             <p className="driver-profile__characteristic">
                                 <span className="driver-profile__lastname">Last Name:</span>
-                                {/* {name} */}
+                                {profile.lastName}
                             </p>
                             <p className="driver-profile__characteristic">
                                 <span className="driver-profile__age">Age:</span>
                                 {/* {props.age} years */}
                             </p>
                             <p className="driver-profile__characteristic">
-                                <span className="driver-profile__sex">Sex:</span>
-                                {/* {props.sex} */}
+                                <span className="driver-profile__sex">Email:</span>
+                                {profile.email}
                             </p>
                             <p className="driver-profile__characteristic">
                                 <span className="driver-profile__languages">Languages:</span>

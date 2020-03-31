@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const Truck = ({truck}) => {

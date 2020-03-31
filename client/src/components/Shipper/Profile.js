@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
+import { useHttp } from '../../hooks/http.hook';
+import { AuthContext } from '../../context/AuthContext';
 import shipper_avatar from '../../images/shipper/shipper_avatar.png';
 
 const ProfileShipper = () => {
+
+    const auth = useContext(AuthContext);
+    const { request } = useHttp();
+    const [profile, setProfile] = useState([]);
+
+    const getProfile = useCallback(async () => {
+        try {
+            const data = await request('/api/user', 'GET', null,
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            setProfile(data);
+        } catch (e) { }
+    }, [auth.token, request]);
+
+    useEffect(() => {
+        getProfile();
+    }, [getProfile]);
+
     return (
         <div className="block">
             <div className="shipper-profile">
@@ -16,19 +36,19 @@ const ProfileShipper = () => {
                         <div className="shipper-profile__description">Here you can check your personal details. Please note that providing up-to-date information is mandatory</div>
                         <p className="shipper-profile__characteristic">
                             <span className="shipper-profile__name">Name:</span>
-                            {/* {name} */}
+                            {profile.fistName}
                         </p>
                         <p className="shipper-profile__characteristic">
                             <span className="shipper-profile__lastname">Last Name:</span>
-                            {/* {name} */}
+                            {profile.lastName}
                         </p>
                         <p className="shipper-profile__characteristic">
                             <span className="shipper-profile__age">Age:</span>
                             {/* {props.age} years */}
                         </p>
                         <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__sex">Sex:</span>
-                            {/* {props.sex} */}
+                            <span className="shipper-profile__sex">Email:</span>
+                            {profile.email}
                         </p>
                         <p className="shipper-profile__characteristic">
                             <span className="shipper-profile__languages">Languages:</span>

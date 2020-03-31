@@ -36,8 +36,8 @@ router.post('/signup', [
         let { firstName, lastName, email, password, userType } = req.body;
         email = email.toLowerCase();
 
-        const candidate = await User.findOne({ email })
-        if (candidate) {
+        const user = await User.findOne({ email })
+        if (user) {
             return res.status(400).json('User already exists');
         }
 
@@ -96,6 +96,5 @@ router.post('/signin', [
         res.status(500).json({ message: 'Something went wrong' });
     }
 })
-
 
 module.exports = router;
