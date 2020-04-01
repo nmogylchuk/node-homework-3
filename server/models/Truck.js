@@ -7,7 +7,7 @@ const schema = new Schema({
     colour: {type: String, required: true},
     gearbox: {type: String, required: true},
     engine: {type: String, required: true},
-    mileage: {type: String, required: true},
+    mileage: {type: Number, required: true},
     assign: {type: Boolean, default: false},
     time: {type: Date, default: Date.now},
     user: {type: Types.ObjectId, ref: 'User'}

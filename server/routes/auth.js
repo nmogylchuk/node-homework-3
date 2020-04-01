@@ -16,6 +16,25 @@ var Schema = {
     }
   }
 
+/**
+* @swagger
+* /api/auth/signup:
+*    post:
+*      summary: "Signup with a new user"
+*      description: ""
+*      operationId: "createUser"
+*      consumes:
+*      - "application/json"
+*      produces:
+*      - "application/json"
+*      parameters:
+*      - in: "body"
+*        name: "body"
+*        description: "User that needs to be created"
+*        required: true
+*        schema:
+*          $ref: "#/server/models/User"
+*/
 router.post('/signup', [
     check('firstName', 'First name must contain more than 3 symbols').isLength({ min: 3 }),
     check('lastName', 'Last name must contain more than 3 symbols').isLength({ min: 3 }),
@@ -29,7 +48,7 @@ router.post('/signup', [
         if (!errors.isEmpty()) {
             return res.status(400).json({
                 errors: errors.array(),
-                message: 'Wrong data in registration fields'
+                message: 'Wrong data in signup fields'
             })
         }
 
@@ -59,6 +78,33 @@ router.post('/signup', [
     }
 })
 
+/**
+* @swagger
+* "/api/auth/signin": {
+*   "post": {
+*       "description": "Signin with existed user",
+*       "consumes" : "application/json",
+*       "responses": {
+*           "201": {
+*               "description": "A successful response",
+*               "content": {
+*                          "schema": {
+*                             "$ref": "#/server/models/User"
+*                           }
+*               }
+*           },
+*           "400": {
+*               "description": "Wrong data in registration fields OR User already exists"
+*           }
+*       }
+*   },
+*   "parameters": {
+*       "name": "login",
+*       "description": "User login",
+*       "required": "true"
+*   }
+*}
+*/
 router.post('/signin', [
     check('email', 'Email must contain more than 3 symbols').isLength({ min: 7 }),
     check('password', 'Password must contain more than 6 symbols').isLength({ min: 6 })

@@ -63,10 +63,10 @@ const Signin = () => {
                 value={form.password}
                 onChange={changeHandler} />
             </div>
-            <div className='submit__item'>
-              <button className='signin__button button' onClick={signinHandler}>Sign In</button>
-            </div>
           </div>
+        </div>
+        <div className='submit__item'>
+          <button className='signin__button button' onClick={signinHandler}>Sign In</button>
         </div>
       </div>
     </div>

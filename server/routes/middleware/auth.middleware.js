@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 module.exports = (req, res, next) => {
-    if (req.url === '/api/auth/signup' || req.url === '/api/auth/signin') {
+    if (req.url === '/api/auth/signup' || req.url === '/api/auth/signin' || req.url.includes('/api-docs')) {
         next();
     } else {
         const [token_type, jwt_token] = req.headers['authorization'].split(' ');

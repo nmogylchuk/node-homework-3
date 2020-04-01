@@ -26,7 +26,6 @@ const Load = (props) => {
         <div className="load">
             <div className="load__description">
                 <h2 className="load__name">{load.name}</h2>
-                {/* <h3 className="load__description">{load.description}</h3> */}
                 <div className="load__list">
                     <div className="load__item">
                         <div className="load__subitem">
@@ -82,20 +81,26 @@ const Load = (props) => {
                             <div className="load__element">{load.truckType}</div>
                         </div>
                     </div>
-                </div>
-                <div className="button__list">
-                    <NavLink to="/shipper/load/post" className="button__link">
-                        <button className="load__button button-post button">Asign</button>
-                    </NavLink>
-                    <NavLink to="/shipper/load/update" className="button__link">
-                        <button className="load__button button-update button">Update</button>
-                    </NavLink>
-                    <NavLink to="/shipper/load/delete" className="button__link">
-                        <button className="load__button button-delete button">Delete</button>
-                    </NavLink>
+                    <div className="load__item">
+                        <div className="load__subitem">
+                            <label className="load__subname" htmlFor='assign'>Assign</label>
+                            <input type="radio" id='assign' name="assign" value="assign" />
+                        </div>
+                    </div>
+                    <div className="button__list">
+                        <NavLink to="/shipper/load/post" className="button__link">
+                            <button className="load__button button-post button">Asign</button>
+                        </NavLink>
+                        <NavLink to="/shipper/load/update" className="button__link">
+                            <button className="load__button button-update button">Update</button>
+                        </NavLink>
+                        <NavLink to="/shipper/load/delete" className="button__link">
+                            <button className="load__button button-delete button">Delete</button>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

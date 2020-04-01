@@ -13,6 +13,7 @@ import DriverCreateTruck from './components/Driver/Trucks/CreateTruck';
 
 import ShipperWelcome from './components/Shipper/Welcome';
 import ShipperProfile from './components/Shipper/Profile';
+import ShipperPassword from './components/Shipper/Password';
 import ShipperLoads from './components/Shipper/Loads/Loads';
 import ShipperLoad from './components/Shipper/Loads/Load';
 import ShipperCreateLoad from './components/Shipper/Loads/CreateLoad';
@@ -41,6 +42,7 @@ export const useRoutes = (isAuthenticated, userType) => {
                 <Switch>
                     <Route exact path="/shipper" component={ShipperWelcome} />
                     <Route exact path="/shipper/profile" component={ShipperProfile} />
+                    <Route exact path="/shipper/profile/password" component={ShipperPassword} />
                     <Route exact path="/shipper/loads" component={ShipperLoads} />
                     <Route exact path="/shipper/load/create" component={ShipperCreateLoad} />
                     <Route exact path="/shipper/load/:id" component={ShipperLoad} />

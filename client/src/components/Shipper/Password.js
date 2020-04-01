@@ -1,7 +1,6 @@
 import React from "react";
 
-
-const DriverPassword = () => {
+const ShipperPassword = () => {
     return (
         <div className='driver-password form'>
             <h2 className='form__item driver-password__title title'>Change Password</h2>
@@ -66,4 +65,4 @@ const DriverPassword = () => {
     )
 }
 
-export default DriverPassword;
+export default ShipperPassword;

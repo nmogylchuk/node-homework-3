@@ -2,10 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('config');
+const path = require('path');
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 const log = require('./routes/middleware/log');
 const auth = require('./routes/middleware/auth.middleware');
-
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -14,6 +16,24 @@ app.use(log);
 app.use(auth);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: "Uber Freight API",
+            description: "Uber Freight API",
+            contact: {
+            name: "Nataliia Mogylchuk"
+            },
+        }
+    },
+    apis: [path.resolve(__dirname + '/server.js'),
+           path.resolve(__dirname + '/routes/*.js'),
+           path.resolve(__dirname + '/models/*.js')]
+};
+
+const swaggerDocument = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));

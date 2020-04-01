@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { useHttp } from '../../hooks/http.hook';
 import { AuthContext } from '../../context/AuthContext';
+import { NavLink } from 'react-router-dom';
 import driver_avatar from '../../images/driver/driver_avatar.png';
 
 const ProfileDriver = () => {
@@ -23,48 +24,38 @@ const ProfileDriver = () => {
     }, [getProfile]);
 
     return (
-            <div className="block">
-                <div className="driver-profile">
-                    <div className="driver-profile__container isSmall">
-                        <div className="driver-profile__image-wrapper">
-                            <img className="driver-profile__image" src={driver_avatar} alt="person" />
-                        </div>
+        <div className="block">
+            <div className="driver-profile">
+                <div className="driver-profile__container isSmall">
+                    <div className="driver-profile__image-wrapper">
+                        <img className="driver-profile__image" src={driver_avatar} alt="person" />
                     </div>
-                    <div className="driver-profile__container isBig">
-                    <div className="driver-profile__title title">Your details</div>
+                </div>
+                <div className="driver-profile__container isBig">
+                <div className="driver-profile__info">
+                        <div className="driver-profile__title title">Your details</div>
                         <div className="driver-profile__description">Here you can check your personal details. Please note that providing up-to-date information is mandatory</div>
-                        <div className="driver-profile__info">
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__name">Name:</span>
-                                {profile.fistName}
-                            </p>
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__lastname">Last Name:</span>
-                                {profile.lastName}
-                            </p>
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__age">Age:</span>
-                                {/* {props.age} years */}
-                            </p>
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__sex">Email:</span>
-                                {profile.email}
-                            </p>
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__languages">Languages:</span>
-                                {/* {props.languages} */}
-                            </p>
-                            <p className="driver-profile__characteristic">
-                                <span className="driver-profile__experience">Experience:</span>
-                                {/* {props.experience} years */}
-                            </p>
-                            <div className="submit__item">
-                            <button className="password-change__button button">Change Password</button>
+                        <div className="driver-profile__list">
+                            <div className="driver-profile__characteristic">
+                                <div className="driver-profile__name shipper-profile__element">Name:</div>
+                                <div className="driver-profile__lastname shipper-profile__element">Last Name:</div>
+                                <div className="driver-profile__email shipper-profile__element">Email:</div>
+                            </div>
+                            <div className="driver-profile__characteristic">
+                                <div className="driver-profile__item">{profile.lastName}</div>
+                                <div className="driver-profile__item">{profile.fistName}</div>
+                                <div className="driver-profile__item">{profile.email}</div>
+                            </div>
                         </div>
+                        <div className='submit__item'>
+                            <NavLink to='/driver/profile/password' className="button__link">
+                                <button className='password-change__button button'>Change password</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     )
 }
 

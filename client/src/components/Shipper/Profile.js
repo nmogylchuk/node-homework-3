@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 import { useHttp } from '../../hooks/http.hook';
 import { AuthContext } from '../../context/AuthContext';
+import { NavLink } from 'react-router-dom';
 import shipper_avatar from '../../images/shipper/shipper_avatar.png';
 
 const ProfileShipper = () => {
@@ -34,37 +35,27 @@ const ProfileShipper = () => {
                     <div className="shipper-profile__info">
                         <div className="shipper-profile__title title">Your details</div>
                         <div className="shipper-profile__description">Here you can check your personal details. Please note that providing up-to-date information is mandatory</div>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__name">Name:</span>
-                            {profile.fistName}
-                        </p>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__lastname">Last Name:</span>
-                            {profile.lastName}
-                        </p>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__age">Age:</span>
-                            {/* {props.age} years */}
-                        </p>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__sex">Email:</span>
-                            {profile.email}
-                        </p>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__languages">Languages:</span>
-                            {/* {props.languages} */}
-                        </p>
-                        <p className="shipper-profile__characteristic">
-                            <span className="shipper-profile__experience">Experience:</span>
-                            {/* {props.experience} years */}
-                        </p>
+                        <div className="shipper-profile__list">
+                            <div className="shipper-profile__characteristic">
+                                <div className="shipper-profile__name shipper-profile__element">Name:</div>
+                                <div className="shipper-profile__lastname shipper-profile__element">Last Name:</div>
+                                <div className="shipper-profile__email shipper-profile__element">Email:</div>
+                            </div>
+                            <div className="shipper-profile__characteristic">
+                                <div className="shipper-profile__item">{profile.lastName}</div>
+                                <div className="shipper-profile__item">{profile.fistName}</div>
+                                <div className="shipper-profile__item">{profile.email}</div>
+                            </div>
+                        </div>
                         <div className="submit__item">
-                            <button className="password-change__button button">Change Password</button>
+                            <NavLink to='/shipper/profile/password' className="button__link">
+                                <button className='password-change__button button'>Change password</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

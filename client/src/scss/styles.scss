@@ -18,11 +18,14 @@
 //pages/driver
 @import './pages/driver/_driverWelcome';
 @import './pages/driver/_driverProfile';
+@import './pages/driver/_driverPassword';
 @import './pages/driver/_driverTrucks';
 @import './pages/driver/_driverCreateTruck';
 
 //pages/shipper
 @import './pages/shipper/_shipperWelcome';
 @import './pages/shipper/_shipperProfile';
-@import './pages/shipper/_shipperLoads';
+@import './pages/shipper/_shipperPassword';
+@import './pages/shipper/_shipperLoad';
+@import './pages/shipper/_shipperLoadView';
 @import './pages/shipper/_shipperCreateLoad';
