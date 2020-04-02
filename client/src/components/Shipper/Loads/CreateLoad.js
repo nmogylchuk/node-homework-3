@@ -43,7 +43,7 @@ const ShipperCreateLoad = (props) => {
             <h2 className='form__item load-create__title title'>Create Load</h2>
             <div className='form__wrapper'>
                 <div className='form__item'>
-                <div className='input'>
+                    <div className='input'>
                         <div className='input__label'>
                             <label htmlFor="load-create__loadName">Load Name</label>
                         </div>
@@ -189,8 +189,8 @@ const ShipperCreateLoad = (props) => {
                         </div>
                     </div>
                     <div className="submit__item">
-                            <button className="load-create__button button" onClick={createLoadHandler}>Create Load</button>
-                        </div>
+                        <button className="load-create__button button" onClick={createLoadHandler}>Create Load</button>
+                    </div>
                 </div>
             </div >
         </div >

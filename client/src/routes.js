@@ -10,6 +10,7 @@ import DriverProfile from './components/Driver/Profile';
 import DriverPassword from './components/Driver/Password';
 import DriverTrucks from './components/Driver/Trucks/Trucks';
 import DriverCreateTruck from './components/Driver/Trucks/CreateTruck';
+import DriverUpdateTruck from './components/Driver/Trucks/UpdateTruck';
 
 import ShipperWelcome from './components/Shipper/Welcome';
 import ShipperProfile from './components/Shipper/Profile';
@@ -31,6 +32,7 @@ export const useRoutes = (isAuthenticated, userType) => {
                     <Route exact path="/driver/profile/password" component={DriverPassword} />
                     <Route exact path="/driver/trucks" component={DriverTrucks} />
                     <Route exact path="/driver/truck/create" component={DriverCreateTruck} />
+                    <Route exact path="/driver/truck/update/:id" component={DriverUpdateTruck} />
                     <Route exact path="/logout" component={Logout}/>
                     <Redirect to="/driver" />
                 </Switch>

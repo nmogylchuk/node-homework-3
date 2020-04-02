@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export const Truck = ({truck}) => {
+export const Truck = ({ truck }) => {
     return (
         <div className="truck__item">
             <div className="truck__description">
@@ -14,11 +14,17 @@ export const Truck = ({truck}) => {
                     <p className="truck__engine"><i className="fas fa-gas-pump"></i>{truck.engine}</p>
                     <p className="truck__mileage"><i className="fas fa-tachometer-alt"></i>{truck.mileage}</p>
                 </div>
+                <div className="truck__item">
+                    <div className="truck__subitem">
+                        <label className="truck__subname" htmlFor='assign'>Assign</label>
+                        <input type="radio" id='assign' name="assign" value="assign" />
+                    </div>
+                </div>
                 <div className="button__list">
                     <NavLink to="/driver/truck/asign" className="button__link">
                         <button className="truck__button button-asign button">Asign</button>
                     </NavLink>
-                    <NavLink to="/driver/truck/update" className="button__link">
+                    <NavLink to={`/driver/truck/update/${truck._id}`} className="button__link">
                         <button className="truck__button button-update button">Update</button>
                     </NavLink>
                     <NavLink to="/driver/truck/delete" className="button__link">

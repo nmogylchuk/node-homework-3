@@ -18,7 +18,7 @@ const ShipperPassword = () => {
                                 type='password'
                                 placeholder='Password'
                             //value={form.password}
-                            //onChange={changeHandler} 
+                            // onChange={changeHandler} 
                             />
                         </div>
                     </div>

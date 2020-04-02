@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 
-const DriverCreateTruck = (props) => {
-
-    const history = useHistory();
+const DriverUpdateTruck = (props) => {
     const auth = useContext(AuthContext);
     const { request } = useHttp();
     const [form, setForm] = useState({
@@ -18,13 +16,39 @@ const DriverCreateTruck = (props) => {
         mileage: ''
     });
 
+    const truckId = props.match.params.id;
+    const getTruck = useCallback(async () => {
+        try {
+            const truck = await request('/api/trucks?id=' + truckId, 'GET', null,
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            
+            setForm({
+                brand: truck.brand,
+                model: truck.model,
+                year: truck.year,
+                colour: truck.colour,
+                gearbox: truck.gearbox,
+                engine: truck.engine,
+                mileage: truck.mileage
+            });
+
+        } catch (e) { }
+    }, [auth.token, request]);
+
+    useEffect(() => {
+        getTruck();
+    }, [getTruck]);
+
+    const history = useHistory();
+
     const changeHandler = event => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
 
-    const createTruckHandler = async () => {
+    const updateTruckHandler = async () => {
         try {
-            const data = await request('/api/trucks', 'POST', { ...form }, {
+            const data = await request('/api/trucks?id=' + truckId, 'PUT', { ...form }, {
                 Authorization: `Bearer ${auth.token}`
             });
             history.push("/driver/trucks");
@@ -36,7 +60,7 @@ const DriverCreateTruck = (props) => {
 
     return (
         <div className='truck-create form'>
-            <h2 className='form__item truck-create__title title'>Create Truck</h2>
+            <h2 className='form__item truck-create__title title'>Update Truck</h2>
             <div className='form__wrapper'>
                 <div className='form__item'>
                     <div className='input'>
@@ -144,7 +168,7 @@ const DriverCreateTruck = (props) => {
                                 onChange={changeHandler} />
                         </div>
                         <div className="submit__item">
-                            <button className="truck-create__button button" onClick={createTruckHandler}>Create Truck</button>
+                            <button className="truck-create__button button" onClick={updateTruckHandler}>Update Truck</button>
                         </div>
                     </div>
                 </div>
@@ -153,4 +177,4 @@ const DriverCreateTruck = (props) => {
     );
 };
 
-export default DriverCreateTruck;
+export default DriverUpdateTruck;

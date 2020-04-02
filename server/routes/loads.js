@@ -4,8 +4,6 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
 router.get('/', async (req, res) => {
-
-    console.log('loadId: ' + req.query.id);
     try {
         if (typeof req.query.id === "undefined") {
             const loads = await Load.find({ user: req.user.userId });

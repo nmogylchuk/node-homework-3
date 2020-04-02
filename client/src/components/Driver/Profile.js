@@ -42,8 +42,8 @@ const ProfileDriver = () => {
                                 <div className="driver-profile__email shipper-profile__element">Email:</div>
                             </div>
                             <div className="driver-profile__characteristic">
+                                <div className="driver-profile__item">{profile.firstName}</div>
                                 <div className="driver-profile__item">{profile.lastName}</div>
-                                <div className="driver-profile__item">{profile.fistName}</div>
                                 <div className="driver-profile__item">{profile.email}</div>
                             </div>
                         </div>
