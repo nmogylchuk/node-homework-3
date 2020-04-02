@@ -68,7 +68,7 @@ router.put('/', [
         }
 
         if (typeof req.query.id === "undefined") {
-            return res.status(401).json({
+            return res.status(400).json({
                 errors: errors.array(),
                 message: 'Truck id is missed'
             })
@@ -77,6 +77,13 @@ router.put('/', [
         let { brand, model, year, colour, gearbox, engine, mileage } = req.body;
 
         const truck = await Truck.findOne({ user: req.user.userId, _id: req.query.id });
+        if (truck.assign) {
+            return res.status(401).json({
+                errors: errors.array(),
+                message: 'Update assign truck is not possible'
+            })
+        }
+
         truck.brand = brand;
         truck.model = model;
         truck.year = year;
@@ -91,5 +98,25 @@ router.put('/', [
         res.status(500).json({ message: "Something went wrong" });
     }
 })
+
+router.patch('/', async (req, res) => {
+    try {
+        if (typeof req.query.id === "undefined") {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Truck id is missed'
+            })
+        }
+
+        let { assign } = req.body;
+
+        const truck = await Truck.findOne({ user: req.user.userId, _id: req.query.id });
+        truck.assign = assign;
+        await truck.save();
+        res.status(201).json({ message: "The truck status has been updated" });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
 
 module.exports = router;
