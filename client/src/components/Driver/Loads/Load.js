@@ -26,33 +26,31 @@ const Load = (props) => {
         getLoad();
     }, [getLoad]);
 
-    const updateLoadStatusHandler = async () => {
-        if (load.status === newStatusValue) {
-            try {
-                load.status = postStatusValue;
-                const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": postStatusValue }, {
-                    Authorization: `Bearer ${auth.token}`
-                });
-            }
-            catch (error) {
-                console.log('Catch error on updating Load status: ' + error)
-            };
-        }
-    };
+    // const updateLoadStatusHandler = async () => {
+    //     if (load.status === newStatusValue) {
+    //         try {
+    //             load.status = postStatusValue;
+    //             const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": postStatusValue }, {
+    //                 Authorization: `Bearer ${auth.token}`
+    //             });
+    //         }
+    //         catch (error) {
+    //             console.log('Catch error on updating Load status: ' + error)
+    //         };
+    //     }
+    // };
 
-    const deleteLoadHandler = async () => {
-        try {
-            const data = await request('/api/loads?id=' + load._id, 'DELETE', null, {
-                Authorization: `Bearer ${auth.token}`
-            });
-            history.push("/shipper/loads");
-        }
-        catch (error) {
-            console.log('Catch error on creating Load: ' + error)
-        };
-    };
-
-    console.log("load status: " + load.status);
+    // const deleteLoadHandler = async () => {
+    //     try {
+    //         const data = await request('/api/loads?id=' + load._id, 'DELETE', null, {
+    //             Authorization: `Bearer ${auth.token}`
+    //         });
+    //         history.push("/shipper/loads");
+    //     }
+    //     catch (error) {
+    //         console.log('Catch error on creating Load: ' + error)
+    //     };
+    // };
 
     return (
         <div className="load">
@@ -118,26 +116,9 @@ const Load = (props) => {
                         <div className="load__subitem">
                             <div className="load__subname">Load Status</div>
                             <div className="load__element">{load.status}</div>
-                            {/* <select className="load-view__status" value={load.status} onChange={handleStatusOptionChange}>
-                                <option className="load-view__status-green" value="New">New</option>
-                                <option className="load-view__status-orange" value="In Progress">In Progress</option>
-                                <option className="load-view__status-red" value="Done">Done</option>
-                            </select> */}
                         </div>
                     </div>
-                    <div className="load__item">
-                        <div className="load__subitem">
-                            <div className="load__subname">Information about driver</div>
-                            <div className="load__element"></div>
-                        </div>
-                    </div>
-                    <div className="load__item">
-                        <div className="load__subitem">
-                            <div className="load__subname">Information about truck</div>
-                            <div className="load__element"></div>
-                        </div>
-                    </div>
-                    <div className="button__list">
+                    {/* <div className="button__list">
                         <NavLink to={`/shipper/load/update/${load._id}`} className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
                             <button className="load__button button-update button">Update</button>
                         </NavLink>
@@ -147,7 +128,7 @@ const Load = (props) => {
                         <NavLink to="/shipper/load/post" className="button__link">
                             <button className="load__button button-post button" onClick={updateLoadStatusHandler}>Post</button>
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 
-const ShipperCreateLoad = (props) => {
-
-    const history = useHistory();
+const ShipperUpdateLoad = (props) => {
     const auth = useContext(AuthContext);
     const { request } = useHttp();
     const [form, setForm] = useState({
@@ -21,16 +19,44 @@ const ShipperCreateLoad = (props) => {
         truckType: ''
     });
 
+    const loadId = props.match.params.id;
+    const getLoad = useCallback(async () => {
+        try {
+            const load = await request('/api/loads?id=' + loadId, 'GET', null,
+                { Authorization: `Bearer ${auth.token}` }
+            );
+            
+            setForm({
+                loadName: load.loadName,
+                countryFrom: load.countryFrom,
+                countryTo: load.countryTo,
+                cityFrom: load.cityFrom,
+                cityTo: load.cityTo,
+                dateFrom: load.dateFrom,
+                dateTo: load.dateTo,
+                weight: load.weight,
+                volume: load.volume,
+                truckType: load.truckType
+            });
+
+        } catch (e) { }
+    }, [auth.token, request]);
+
+    useEffect(() => {
+        getLoad();
+    }, [getLoad]);
+
+    const history = useHistory();
+
     const changeHandler = event => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
 
-    const createLoadHandler = async () => {
+    const updateLoadHandler = async () => {
         try {
-            const data = await request('/api/loads', 'POST', { ...form }, {
+            const data = await request('/api/loads?id=' + loadId, 'PUT', { ...form }, {
                 Authorization: `Bearer ${auth.token}`
             });
-            console.log("createLoadHandler data: " + JSON.stringify(data));
             history.push("/shipper/loads");
         }
         catch (error) {
@@ -40,7 +66,7 @@ const ShipperCreateLoad = (props) => {
 
     return (
         <div className='load-create form'>
-            <h2 className='form__item load-create__title title'>Create Load</h2>
+            <h2 className='form__item load-create__title title'>Update Load</h2>
             <div className='form__wrapper'>
                 <div className='form__item'>
                     <div className='input'>
@@ -189,7 +215,7 @@ const ShipperCreateLoad = (props) => {
                         </div>
                     </div>
                     <div className="submit__item">
-                        <button className="load-create__button button" onClick={createLoadHandler}>Create Load</button>
+                        <button className="load-create__button button" onClick={updateLoadHandler}>Update Load</button>
                     </div>
                 </div>
             </div >
@@ -197,4 +223,4 @@ const ShipperCreateLoad = (props) => {
     );
 };
 
-export default ShipperCreateLoad;
+export default ShipperUpdateLoad;

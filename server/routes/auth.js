@@ -118,7 +118,8 @@ router.post('/signin', [
             })
         }
 
-        const { email, password } = req.body;
+        let { email, password } = req.body;
+        email = email.toLowerCase();
 
         const user = await User.findOne({ email });
         if (!user) {
@@ -142,5 +143,26 @@ router.post('/signin', [
         res.status(500).json({ message: 'Something went wrong' });
     }
 })
+
+router.delete('/', async (req, res) => {
+    try {
+        console.log("delete")
+        const user = await User.findOne({ _id: req.user.userId});
+        if (!user) {
+            return res.status(400).json({ message: "This user doesn't exist" });
+        }
+
+        User.findOneAndDelete({ _id: req.user.userId }, function (err) {
+            if(err) {
+                console.log(err);
+            }
+            console.log("Successful deletion");
+          });
+
+        res.status(201).json({ message: "User has been successfully removed" });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
 
 module.exports = router;

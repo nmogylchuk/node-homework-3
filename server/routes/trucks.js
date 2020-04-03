@@ -119,4 +119,34 @@ router.patch('/', async (req, res) => {
     }
 });
 
+router.delete('/', async (req, res) => {
+    try {
+        if (typeof req.query.id === "undefined") {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Truck id is missed'
+            })
+        }
+
+        const truck = await Truck.findOne({ user: req.user.userId, _id: req.query.id });
+        if (truck.assign) {
+            return res.status(401).json({
+                errors: errors.array(),
+                message: 'Update assign truck is not possible'
+            })
+        }
+
+        Truck.findOneAndDelete({ user: req.user.userId, _id: req.query.id }, function (err) {
+            if(err) {
+                console.log(err);
+            }
+            console.log("Successful deletion");
+          });
+
+        res.status(201).json({ message: "The truck has been successfully removed" });
+    } catch (error) {
+        res.status(500).json({ message: "Something went wrong" });
+    }
+});
+
 module.exports = router;

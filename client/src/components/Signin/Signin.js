@@ -24,7 +24,7 @@ const Signin = () => {
       history.push("/");
     }
     catch (error) {
-      console.log('Carch error on signin: ' + error)
+      console.log('Catch error on signin: ' + error)
     };
   };
 

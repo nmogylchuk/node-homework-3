@@ -60,7 +60,14 @@
 }
 
 .password-change__button {
-  min-width: 150px;
+  min-width: 190px;
+  min-height: 40px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.profile-delete__button {
+  min-width: 190px;
   min-height: 40px;
   padding: 10px;
   margin: 10px 0;

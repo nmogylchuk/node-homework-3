@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export const LoadView = ({ load }) => {
@@ -21,11 +21,6 @@ export const LoadView = ({ load }) => {
                     <div className="load-view__item">
                         <div className="load-view__subname">Load Status</div>
                         <div className="load-view__element">{load.status}</div>
-                        {/* <select className="load-view__status">
-                            <option className="load-view__status-green" value="new">New</option>
-                            <option className="load-view__status-orange" value="inProgress">In Progress</option>
-                            <option className="load-view__status-red" value="done">Done</option>
-                        </select> */}
                     </div>
                     <div className="load-view__item">
                         <div className="load-view__subname">More</div>

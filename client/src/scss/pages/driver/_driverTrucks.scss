@@ -58,12 +58,25 @@
 }
 }
 
-.button__list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
+.toggle {
+  &__item {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  &__label {
+    padding: 10px;
+    text-align: center;
+    color: $yellow;
+    font-weight: bold;
+  }
+
+  &__element {
+    margin: 5px;
+    border: 1px solid $yellow;
+    box-shadow: $box-shadow-yellow;
+  }
 }
 
 .button-create {

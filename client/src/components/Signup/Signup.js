@@ -27,7 +27,7 @@ export const Signup = (props) => {
             const data = await request('api/auth/signup', 'POST', { ...form });
             history.push("/signin");
         } catch (error) {
-            console.log('Carch error on signup: ' + error)
+            console.log('Catch error on signup: ' + error)
         }
     };
 

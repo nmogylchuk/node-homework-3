@@ -12,7 +12,7 @@ const Logout = () => {
             history.push("/");
         }
         catch (error) {
-            console.log('Carch error on logout: ' + error)
+            console.log('Catch error on logout: ' + error)
         };
     };
 

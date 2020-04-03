@@ -30,7 +30,7 @@ const DriverCreateTruck = (props) => {
             history.push("/driver/trucks");
         }
         catch (error) {
-            console.log('Carch error on creating Truck: ' + error)
+            console.log('Catch error on creating Truck: ' + error)
         };
     };
 

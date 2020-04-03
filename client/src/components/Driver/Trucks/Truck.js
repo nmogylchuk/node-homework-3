@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
+import { useHistory } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
 import Switch from "react-switch";
@@ -7,6 +8,7 @@ import Switch from "react-switch";
 export const Truck = ({ truck }) => {
     const auth = useContext(AuthContext);
     const { request } = useHttp();
+    const history = useHistory();
 
     const updateTruckStatusHandler = async () => {
         try {
@@ -16,7 +18,19 @@ export const Truck = ({ truck }) => {
             });
         }
         catch (error) {
-            console.log('Carch error on creating Truck: ' + error)
+            console.log('Catch error on creating Truck: ' + error)
+        };
+    };
+
+    const deleteTruckHandler = async () => {
+        try {
+            const data = await request('/api/trucks?id=' + truck._id, 'DELETE', null, {
+                Authorization: `Bearer ${auth.token}`
+            });
+            history.push("/driver/trucks");
+        }
+        catch (error) {
+            console.log('Catch error on creating Truck: ' + error)
         };
     };
 
@@ -32,21 +46,18 @@ export const Truck = ({ truck }) => {
                     <p className="truck__engine"><i className="fas fa-gas-pump"></i>{truck.engine}</p>
                     <p className="truck__mileage"><i className="fas fa-tachometer-alt"></i>{truck.mileage}</p>
                 </div>
-                <div className="truck__item">
-                    <label className="truck__label">
-                        <span>{truck.assign ? 'Reasign' : 'Asign'}</span>
-                        <Switch onChange={updateTruckStatusHandler} checked={truck.assign} />
+                <div className="toggle">
+                    <label className="toggle__item">
+                        <div className="toggle__label">{truck.assign ? "Reasign" : "Asign"}</div>
+                       <Switch className="toggle__element" onChange={updateTruckStatusHandler} checked={truck.assign} />
                     </label>
                 </div>
                 <div className="button__list">
-                    <NavLink to="/driver/truck/asign" className="button__link">
-                        <button className="truck__button button-asign button">{truck.assign ? 'Reasign' : 'Asign'}</button>
-                    </NavLink>
-                    <NavLink to={`/driver/truck/update/${truck._id}`} className="button__link" style={{ display: truck.assign ? 'none' : 'block' }}>
+                    <NavLink to={`/driver/truck/update/${truck._id}`} className="button__link" style={{ visibility: truck.assign ? 'hidden' : 'visible' }}>
                         <button className="truck__button button-update button">Update</button>
                     </NavLink>
-                    <NavLink to="/driver/truck/delete" className="button__link" style={{ display: truck.assign ? 'none' : 'block' }}>
-                        <button className="truck__button button-delete button">Delete</button>
+                    <NavLink to="/driver/truck/delete" className="button__link">
+                        <button className="truck__button button-delete button" onClick={deleteTruckHandler} style={{ visibility: truck.assign ? 'hidden' : 'visible' }} >Delete</button>
                     </NavLink>
                 </div>
             </div>

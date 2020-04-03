@@ -51,6 +51,9 @@ const ProfileShipper = () => {
                             <NavLink to='/shipper/profile/password' className="button__link">
                                 <button className='password-change__button button'>Change password</button>
                             </NavLink>
+                            <NavLink to='/shipper/profile/delete' className="button__link">
+                                <button className='profile-delete__button button'>Delete Profile</button>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
