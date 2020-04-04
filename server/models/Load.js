@@ -11,7 +11,7 @@ const schema = new Schema({
     weight: { type: String, default: false },
     volume: { type: Number, default: false },
     truckType: { type: String, default: false },
-    status: { type: String, default: 'New' },
+    status: { type: String, default: 'NEW' },
     shippingDriver: { type: Types.ObjectId, ref: 'User' },
     shippingTruck: { type: Types.ObjectId, ref: 'Truck' },
     time: { type: Date, default: Date.now },

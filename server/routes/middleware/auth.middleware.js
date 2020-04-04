@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
 
         try {
             let user = jwt.verify(jwt_token, config.get('jwtSecret'));
+            //console.log("user: " + JSON.stringify(user));
             req.user = user;
             next();
         } catch (e) {

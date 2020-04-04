@@ -9,13 +9,13 @@ const Load = (props) => {
     const { request } = useHttp();
     const [load, setLoad] = useState([]);
     const history = useHistory();
-    const newStatusValue = 'NEW';
     const postStatusValue = 'POSTED';
+    const assignStatusValue = 'ASSIGN';
 
     const getLoad = useCallback(async () => {
         try {
             let loadId = props.match.params.id;
-            const data = await request('/api/loads?id=' + loadId, 'GET', null,
+            const data = await request('/api/loads?id=' + loadId + '&status=' + postStatusValue, 'GET', null,
                 { Authorization: `Bearer ${auth.token}` }
             );
             setLoad(data);
@@ -26,19 +26,18 @@ const Load = (props) => {
         getLoad();
     }, [getLoad]);
 
-    // const updateLoadStatusHandler = async () => {
-    //     if (load.status === newStatusValue) {
-    //         try {
-    //             load.status = postStatusValue;
-    //             const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": postStatusValue }, {
-    //                 Authorization: `Bearer ${auth.token}`
-    //             });
-    //         }
-    //         catch (error) {
-    //             console.log('Catch error on updating Load status: ' + error)
-    //         };
-    //     }
-    // };
+    const assignLoadHandler = async () => {
+        try {
+            const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": assignStatusValue }, {
+                Authorization: `Bearer ${auth.token}`
+            });
+            history.push("/driver/trucks");
+        }
+        catch (error) {
+            console.log('Catch error on updating Load status: ' + error)
+        };
+
+    };
 
     // const deleteLoadHandler = async () => {
     //     try {
@@ -111,24 +110,17 @@ const Load = (props) => {
                             <div className="load__element">{load.truckType}</div>
                         </div>
                     </div>
-
-                    <div className="load__item">
-                        <div className="load__subitem">
-                            <div className="load__subname">Load Status</div>
-                            <div className="load__element">{load.status}</div>
-                        </div>
-                    </div>
-                    {/* <div className="button__list">
-                        <NavLink to={`/shipper/load/update/${load._id}`} className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
+                    <div className="button__list">
+                        {/* <NavLink to={`/shipper/load/update/${load._id}`} className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
                             <button className="load__button button-update button">Update</button>
                         </NavLink>
                         <NavLink to="/shipper/load/delete" className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
                             <button className="load__button button-delete button" onClick={deleteLoadHandler}>Delete</button>
+                        </NavLink> */}
+                        <NavLink to="/driver/load/post" className="button__link">
+                            <button className="load__button button-post button" onClick={assignLoadHandler}>Assign Load</button>
                         </NavLink>
-                        <NavLink to="/shipper/load/post" className="button__link">
-                            <button className="load__button button-post button" onClick={updateLoadStatusHandler}>Post</button>
-                        </NavLink>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </div>

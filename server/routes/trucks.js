@@ -10,10 +10,10 @@ router.get('/', async (req, res) => {
             res.json(trucks);
         } else {
             const truck = await Truck.findOne({ user: req.user.userId, _id: req.query.id });
-            console.log(truck._id);
             res.json(truck);
         }
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Something went wrong" });
     }
 });

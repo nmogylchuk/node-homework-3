@@ -8,13 +8,13 @@ const config = require('config');
 
 var Schema = {
     "userType": {
-      in: 'body',
-      matches: {
-        options: [/\b(?:driver|shipper)\b/],
-        errorMessage: "Invalid user type"
-      }
+        in: 'body',
+        matches: {
+            options: [/\b(?:driver|shipper)\b/],
+            errorMessage: "Invalid user type"
+        }
     }
-  }
+}
 
 /**
 * @swagger
@@ -38,7 +38,7 @@ var Schema = {
 router.post('/signup', [
     check('firstName', 'First name must contain more than 3 symbols').isLength({ min: 3 }),
     check('lastName', 'Last name must contain more than 3 symbols').isLength({ min: 3 }),
-    check('email',"Invalid  e-mail").isEmail(),
+    check('email', "Invalid  e-mail").isEmail(),
     checkSchema(Schema),
     check('password', 'Password must contain more than 6 symbols').isLength({ min: 6 })
 ], async (req, res) => {
@@ -66,11 +66,10 @@ router.post('/signup', [
         newUser.lastName = lastName;
         newUser.userType = userType;
         newUser.password = await bcrypt.hash(password, 12);
-        console.log(JSON.stringify(newUser));
 
         await newUser.save();
 
-        res.status(201).json({ message: "User was created"});
+        res.status(201).json({ message: "User was created" });
     }
     catch (error) {
         console.log(error);
@@ -132,35 +131,36 @@ router.post('/signin', [
         }
 
         const token = jwt.sign(
-            { userId: user.id },
+            { userId: user.id, userType: user.userType },
             config.get('jwtSecret'),
-            { expiresIn: '1h' }
+            { expiresIn: '2h' }
         )
 
         res.status(201).json({ token, userId: user.id, userType: user.userType });
     }
     catch (error) {
+        console.log(error);
         res.status(500).json({ message: 'Something went wrong' });
     }
 })
 
 router.delete('/', async (req, res) => {
     try {
-        console.log("delete")
-        const user = await User.findOne({ _id: req.user.userId});
+        const user = await User.findOne({ _id: req.user.userId });
         if (!user) {
             return res.status(400).json({ message: "This user doesn't exist" });
         }
 
         User.findOneAndDelete({ _id: req.user.userId }, function (err) {
-            if(err) {
+            if (err) {
                 console.log(err);
             }
             console.log("Successful deletion");
-          });
+        });
 
         res.status(201).json({ message: "User has been successfully removed" });
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Something went wrong" });
     }
 });

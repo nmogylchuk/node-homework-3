@@ -24,7 +24,7 @@ export const LoadView = ({ load }) => {
                     </div>
                     <div className="load-view__item">
                         <div className="load-view__subname">More</div>
-                            <NavLink to={`/shipper/load/${load.id}`} className="button__link">
+                            <NavLink to={`/driver/load/${load.id}`} className="button__link">
                                 <button className="load-view__button button-details button">Details</button>
                             </NavLink>
                     </div>

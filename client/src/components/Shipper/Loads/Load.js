@@ -128,13 +128,13 @@ const Load = (props) => {
                     <div className="load__item">
                         <div className="load__subitem">
                             <div className="load__subname">Information about driver</div>
-                            <div className="load__element"></div>
+                            <div className="load__element">{load.shippingDriver}</div>
                         </div>
                     </div>
                     <div className="load__item">
                         <div className="load__subitem">
                             <div className="load__subname">Information about truck</div>
-                            <div className="load__element"></div>
+                            <div className="load__element">{load.shippingTruck}</div>
                         </div>
                     </div>
                     <div className="button__list">
