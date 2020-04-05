@@ -1,15 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { useHttp } from '../../hooks/http.hook';
 import { useHistory } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
 
 export const Signup = (props) => {
 
-    console.log("userType: " + props.location.userType);
-
     const history = useHistory();
-    const auth = useContext(AuthContext);
-    const { loading, request } = useHttp();
+    const { request } = useHttp();
     const [form, setForm] = useState({
         firstName: '',
         lastName: '',

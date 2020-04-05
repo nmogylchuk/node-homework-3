@@ -30,7 +30,6 @@ const ShipperCreateLoad = (props) => {
             const data = await request('/api/loads', 'POST', { ...form }, {
                 Authorization: `Bearer ${auth.token}`
             });
-            console.log("createLoadHandler data: " + JSON.stringify(data));
             history.push("/shipper/loads");
         }
         catch (error) {

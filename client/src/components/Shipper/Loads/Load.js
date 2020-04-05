@@ -52,8 +52,6 @@ const Load = (props) => {
         };
     };
 
-    console.log("load status: " + load.status);
-
     return (
         <div className="load">
             <div className="load__description">

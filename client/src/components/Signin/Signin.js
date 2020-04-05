@@ -19,7 +19,6 @@ const Signin = () => {
   const signinHandler = async () => {
     try {
       const data = await request('/api/auth/signin', 'POST', { ...form });
-      console.log("signinHandler data: " + JSON.stringify(data));
       auth.login(data.token, data.userId, data.userType);
       history.push("/");
     }

@@ -10,13 +10,7 @@ router.get('/', async (req, res) => {
     if (req.user.userType === 'driver') {
         if (typeof req.query.id !== "undefined") {
             const load = await Load.findOne({ _id: req.query.id });
-            console.log("req.user.userId: " + req.user.userId);
-            console.log("shippingDriver: " + load.shippingDriver);
-            console.log("load status: " + load.status);
-            console.log("load cond1: " + load.status === 'POSTED');
-            console.log("load cond2: " + load.shippingDriver === req.user.userId);
             if (load.status === 'POSTED' || load.shippingDriver == req.user.userId) {
-                console.log("true");
                 res.json(load);
 
             }
