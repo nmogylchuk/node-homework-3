@@ -23,6 +23,9 @@ const HeaderDriver = (props) => {
                         <li className="nav__item">
                             <NavLink to="/driver/loads" className="nav__link">Loads</NavLink>
                         </li>
+                        <li className="nav__item">
+                            <NavLink to="/driver/myloads" className="nav__link">My Loads</NavLink>
+                        </li>
                          <li className="nav__item">
                             <NavLink to="/logout" className="nav__link">Logout</NavLink>
                         </li>

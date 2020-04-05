@@ -11,15 +11,18 @@ const Load = (props) => {
     const history = useHistory();
     const postStatusValue = 'POSTED';
     const assignStatusValue = 'ASSIGN';
+    const shippedStatusValue = 'SHIPPED';
 
     const getLoad = useCallback(async () => {
         try {
             let loadId = props.match.params.id;
-            const data = await request('/api/loads?id=' + loadId + '&status=' + postStatusValue, 'GET', null,
+            const data = await request('/api/loads?id=' + loadId, 'GET', null,
                 { Authorization: `Bearer ${auth.token}` }
             );
             setLoad(data);
-        } catch (e) { }
+        } catch (error) { 
+            console.log(error);
+        }
     }, [auth.token, request]);
 
     useEffect(() => {
@@ -31,7 +34,7 @@ const Load = (props) => {
             const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": assignStatusValue }, {
                 Authorization: `Bearer ${auth.token}`
             });
-            history.push("/driver/trucks");
+            history.push("/driver/loads");
         }
         catch (error) {
             console.log('Catch error on updating Load status: ' + error)
@@ -39,17 +42,18 @@ const Load = (props) => {
 
     };
 
-    // const deleteLoadHandler = async () => {
-    //     try {
-    //         const data = await request('/api/loads?id=' + load._id, 'DELETE', null, {
-    //             Authorization: `Bearer ${auth.token}`
-    //         });
-    //         history.push("/shipper/loads");
-    //     }
-    //     catch (error) {
-    //         console.log('Catch error on creating Load: ' + error)
-    //     };
-    // };
+    const shippedLoadHandler = async () => {
+        try {
+            const data = await request('/api/loads?id=' + load._id, 'PATCH', { "status": shippedStatusValue }, {
+                Authorization: `Bearer ${auth.token}`
+            });
+            history.push("/driver/myloads");
+        }
+        catch (error) {
+            console.log('Catch error on updating Load status: ' + error)
+        };
+
+    };
 
     return (
         <div className="load">
@@ -111,14 +115,11 @@ const Load = (props) => {
                         </div>
                     </div>
                     <div className="button__list">
-                        {/* <NavLink to={`/shipper/load/update/${load._id}`} className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
-                            <button className="load__button button-update button">Update</button>
-                        </NavLink>
-                        <NavLink to="/shipper/load/delete" className="button__link" style={{ display: load.status === newStatusValue ? 'block' : 'none' }}>
-                            <button className="load__button button-delete button" onClick={deleteLoadHandler}>Delete</button>
-                        </NavLink> */}
                         <NavLink to="/driver/load/post" className="button__link">
-                            <button className="load__button button-post button" onClick={assignLoadHandler}>Assign Load</button>
+                            <button className="load__button button-post button" onClick={assignLoadHandler} style={{ display: load.status === postStatusValue ? 'block' : 'none' }}>Assign Load</button>
+                        </NavLink>
+                        <NavLink to="/driver/load/post" className="button__link">
+                            <button className="load__button button-post button" onClick={shippedLoadHandler} style={{ display: load.status === assignStatusValue ? 'block' : 'none' }}>Shipped Load</button>
                         </NavLink>
                     </div>
                 </div>

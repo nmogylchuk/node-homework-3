@@ -21,9 +21,6 @@ const HeaderShipper = (props) => {
                             <NavLink to="/shipper/loads" className="nav__link">Loads</NavLink>
                         </li>
                         <li className="nav__item">
-                            <NavLink to="/shipper/shipping" className="nav__link">My Shipping</NavLink>
-                        </li>
-                        <li className="nav__item">
                             <NavLink to="/logout" className="nav__link">Logout</NavLink>
                         </li>
                     </ul>

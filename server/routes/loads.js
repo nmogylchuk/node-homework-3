@@ -9,10 +9,26 @@ router.get('/', async (req, res) => {
     // try {
     if (req.user.userType === 'driver') {
         if (typeof req.query.id !== "undefined") {
-            const load = await Load.findOne({ status: req.query.status, _id: req.query.id });
-            res.json(load);
+            const load = await Load.findOne({ _id: req.query.id });
+            console.log("req.user.userId: " + req.user.userId);
+            console.log("shippingDriver: " + load.shippingDriver);
+            console.log("load status: " + load.status);
+            console.log("load cond1: " + load.status === 'POSTED');
+            console.log("load cond2: " + load.shippingDriver === req.user.userId);
+            if (load.status === 'POSTED' || load.shippingDriver == req.user.userId) {
+                console.log("true");
+                res.json(load);
+
+            }
         }
-        const loads = await Load.find({ status: req.query.status });
+
+        let loads;
+
+        if (req.query.status == 'POSTED') {
+            loads = await Load.find({ status: req.query.status });
+        } else {
+            loads = await Load.find({ shippingDriver: req.user.userId });
+        }
 
         let loadsRes = loads.map(function (load) {
             return {
@@ -25,6 +41,7 @@ router.get('/', async (req, res) => {
             };
         });
         res.json(loadsRes);
+
     }
 
     if (typeof req.query.id !== "undefined") {
@@ -45,8 +62,8 @@ router.get('/', async (req, res) => {
             shippingDriver: '',
             shippingTruck: ''
         };
-        
-        if (load.status === "ASSIGN") {
+
+        if (load.status === "ASSIGN" || load.status === "SHIPPED") {
             const user = await User.findOne({ _id: load.shippingDriver });
             const truck = await Truck.findOne({ _id: load.shippingTruck });
             loadRes.shippingDriver = user.firstName + ' ' + user.lastName;
@@ -139,7 +156,7 @@ router.put('/', [
         let { loadName, countryFrom, countryTo, cityFrom, cityTo, dateFrom, dateTo, weight, volume, truckType } = req.body;
 
         const load = await Load.findOne({ user: req.user.userId, _id: req.query.id });
-        if (load.status !== 'New') {
+        if (load.status !== 'NEW') {
             return res.status(401).json({
                 errors: errors.array(),
                 message: 'Update load with non New status is prohibited'
@@ -167,37 +184,43 @@ router.put('/', [
 
 router.patch('/', async (req, res) => {
     try {
-    if (typeof req.query.id === "undefined") {
-        return res.status(400).json({
-            errors: errors.array(),
-            message: 'Load id is missed'
-        })
-    }
-
-    let { status } = req.body;
-
-    if (req.user.userType === 'driver') {
-        const load = await Load.findOne({ _id: req.query.id });
-
-        if (load.status !== 'POSTED') {
-            return res.status(401).json({
-                message: 'Unnable to update load status to ASSIGN'
+        if (typeof req.query.id === "undefined") {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Load id is missed'
             })
         }
 
-        const truck = await Truck.findOne({ user: req.user.userId, assign: true });
+        let { status } = req.body;
 
+        if (req.user.userType === 'driver') {
+            const load = await Load.findOne({ _id: req.query.id });
+
+            if (status === 'ASSIGN' && load.status !== 'POSTED') {
+                return res.status(401).json({
+                    message: 'Unnable to update load status to ASSIGN'
+                }) 
+            }
+
+            if (status === 'SHIPPED' && load.status !== 'ASSIGN') {
+                return res.status(401).json({
+                    message: 'Unnable to update load status to SHIPPED'
+                }) 
+            }
+
+            const truck = await Truck.findOne({ user: req.user.userId, assign: true });
+
+            load.status = status;
+            load.shippingDriver = truck.user._id;
+            load.shippingTruck = truck._id;
+            await load.save();
+            res.status(201).json({ message: "The load status has been updated" });
+        }
+
+        const load = await Load.findOne({ user: req.user.userId, _id: req.query.id });
         load.status = status;
-        load.shippingDriver = truck.user._id;
-        load.shippingTruck = truck._id;
         await load.save();
         res.status(201).json({ message: "The load status has been updated" });
-    }
-
-    const load = await Load.findOne({ user: req.user.userId, _id: req.query.id });
-    load.status = status;
-    await load.save();
-    res.status(201).json({ message: "The load status has been updated" });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "Something went wrong" });
