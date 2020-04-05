@@ -4,10 +4,10 @@ import Welcome from './components/Welcome/Welcome';
 import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
 import Logout from './components/Logout/Logout';
+import PasswordChange from './components/PasswordChange/PasswordChange';
 
 import DriverWelcome from './components/Driver/Welcome';
 import DriverProfile from './components/Driver/Profile';
-import DriverPassword from './components/Driver/Password';
 import DriverTrucks from './components/Driver/Trucks/Trucks';
 import DriverCreateTruck from './components/Driver/Trucks/CreateTruck';
 import DriverUpdateTruck from './components/Driver/Trucks/UpdateTruck';
@@ -16,7 +16,6 @@ import DriverLoad from './components/Driver/Loads/Load';
 
 import ShipperWelcome from './components/Shipper/Welcome';
 import ShipperProfile from './components/Shipper/Profile';
-import ShipperPassword from './components/Shipper/Password';
 import ShipperProfileDelete from './components/Shipper/ProfileDelete';
 import ShipperLoads from './components/Shipper/Loads/Loads';
 import ShipperLoad from './components/Shipper/Loads/Load';
@@ -33,13 +32,13 @@ export const useRoutes = (isAuthenticated, userType) => {
                 <Switch>
                     <Route exact path="/driver" component={DriverWelcome} />
                     <Route exact path="/driver/profile" component={DriverProfile} />
-                    <Route exact path="/driver/profile/password" component={DriverPassword} />
+                    <Route exact path="/driver/profile/password" component={PasswordChange} />
                     <Route exact path="/driver/trucks" component={DriverTrucks} />
                     <Route exact path="/driver/truck/create" component={DriverCreateTruck} />
                     <Route exact path="/driver/truck/update/:id" component={DriverUpdateTruck} />
                     <Route exact path="/driver/loads" component={DriverLoads} />
                     <Route exact path="/driver/load/:id" component={DriverLoad} />
-                    <Route exact path="/logout" component={Logout}/>
+                    <Route exact path="/logout" component={Logout} />
                     <Redirect to="/driver" />
                 </Switch>
             );
@@ -50,13 +49,13 @@ export const useRoutes = (isAuthenticated, userType) => {
                 <Switch>
                     <Route exact path="/shipper" component={ShipperWelcome} />
                     <Route exact path="/shipper/profile" component={ShipperProfile} />
-                    <Route exact path="/shipper/profile/password" component={ShipperPassword} />
+                    <Route exact path="/shipper/profile/password" component={PasswordChange} />
                     <Route exact path="/shipper/profile/delete" component={ShipperProfileDelete} />
                     <Route exact path="/shipper/loads" component={ShipperLoads} />
                     <Route exact path="/shipper/load/create" component={ShipperCreateLoad} />
                     <Route exact path="/shipper/load/:id" component={ShipperLoad} />
                     <Route exact path="/shipper/load/update/:id" component={ShipperUpdateLoad} />
-                    <Route exact path="/logout" component={Logout}/>
+                    <Route exact path="/logout" component={Logout} />
                     <Redirect to="/shipper" />
                 </Switch>
             );
