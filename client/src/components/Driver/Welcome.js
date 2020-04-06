@@ -1,7 +1,5 @@
 import React from "react";
 
-import truck_photo from '../../images/driver/truck_photo.png'
-
 
 const DriverWelcome = () => {
     return (

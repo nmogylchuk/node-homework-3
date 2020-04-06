@@ -65,107 +65,121 @@ const DriverUpdateTruck = (props) => {
                 <div className='form__item'>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__brand">Brand</label>
+                            <label htmlFor="brand">Brand</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='brand'
+                                id='brand'
                                 className='input__field'
                                 type='text'
                                 placeholder='Brand'
                                 noValidate
                                 value={form.brand}
-                                onChange={changeHandler} />
+                                onChange={changeHandler} 
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__model">Model</label>
+                            <label htmlFor="model">Model</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='model'
+                                id='model'
                                 className='input__field'
                                 type='text'
                                 placeholder='Model'
                                 noValidate
                                 value={form.model}
-                                onChange={changeHandler} />
+                                onChange={changeHandler} 
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__year">Year</label>
+                            <label htmlFor="year">Year</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='year'
+                                id='year'
                                 className='input__field'
                                 type='text'
                                 placeholder='Year'
                                 noValidate
                                 value={form.year}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__colour">Colour</label>
+                            <label htmlFor="colour">Colour</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='colour'
+                                id='colour'
                                 className='input__field'
                                 type='text'
                                 placeholder='Colour'
                                 noValidate
                                 value={form.colour}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__gearbox">Gearbox</label>
+                            <label htmlFor="gearbox">Gearbox</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='gearbox'
+                                id='gearbox'
                                 className='input__field'
                                 type='text'
                                 placeholder='Gearbox'
                                 noValidate
                                 value={form.gearbox}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__engine">Engine</label>
+                            <label htmlFor="engine">Engine</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='engine'
+                                id='engine'
                                 className='input__field'
                                 type='text'
                                 placeholder='Engine'
                                 noValidate
                                 value={form.engine}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="truck-create__mileage">Mileage</label>
+                            <label htmlFor="mileage">Mileage</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='mileage'
+                                id='mileage'
                                 className='input__field'
                                 type='text'
                                 placeholder='Mileage'
                                 pattern='^[ 0-9]+$'
                                 value={form.mileage}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                         <div className="submit__item">
                             <button className="truck-create__button button" onClick={updateTruckHandler}>Update Truck</button>

@@ -4,6 +4,7 @@ import Welcome from './components/Welcome/Welcome';
 import Signup from './components/Signup/Signup';
 import Signin from './components/Signin/Signin';
 import Logout from './components/Logout/Logout';
+import Error from './components/Error/Error';
 import PasswordChange from './components/PasswordChange/PasswordChange';
 
 import DriverWelcome from './components/Driver/Welcome';

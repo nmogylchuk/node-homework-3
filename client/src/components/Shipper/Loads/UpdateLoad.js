@@ -71,147 +71,167 @@ const ShipperUpdateLoad = (props) => {
                 <div className='form__item'>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__loadName">Load Name</label>
+                            <label htmlFor="loadName">Load Name</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='loadName'
+                                id='loadName'
                                 className='input__field'
                                 type='text'
                                 placeholder='Load Name'
                                 noValidate
                                 value={form.loadName}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__countryFrom">Country From</label>
+                            <label htmlFor="countryFrom">Country From</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='countryFrom'
+                                id='countryFrom'
                                 className='input__field'
                                 type='text'
                                 placeholder='Country From'
                                 noValidate
                                 value={form.countryFrom}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__countryTo">Country To</label>
+                            <label htmlFor="countryTo">Country To</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='countryTo'
+                                id='countryTo'
                                 className='input__field'
                                 type='text'
                                 placeholder='Country To'
                                 noValidate
                                 value={form.countryTo}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__cityFrom">City From</label>
+                            <label htmlFor="cityFrom">City From</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='cityFrom'
+                                id='cityFrom'
                                 className='input__field'
                                 type='text'
                                 placeholder='City From'
                                 noValidate
                                 value={form.cityFrom}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__cityTo">City To</label>
+                            <label htmlFor="cityTo">City To</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='cityTo'
+                                id='cityTo'
                                 className='input__field'
                                 type='text'
                                 placeholder='City To'
                                 noValidate
                                 value={form.cityTo}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__dateFrom">Date From</label>
+                            <label htmlFor="dateFrom">Date From</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='dateFrom'
+                                id='dateFrom'
                                 className='input__field'
                                 type='text'
                                 placeholder='Date From'
                                 value={form.dateFrom}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__dateTo">Date To</label>
+                            <label htmlFor="dateTo">Date To</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='dateTo'
+                                id='dateTo'
                                 className='input__field'
                                 type='text'
                                 placeholder='Date To'
                                 value={form.dateTo}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__weight">Weight</label>
+                            <label htmlFor="weight">Weight</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='weight'
+                                id='weight'
                                 className='input__field'
                                 type='text'
                                 placeholder='Weight From'
                                 value={form.weight}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__volume">Volume</label>
+                            <label htmlFor="volume">Volume</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='volume'
+                                id='volume'
                                 className='input__field'
                                 type='text'
                                 placeholder='Volume'
                                 value={form.volume}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className='input'>
                         <div className='input__label'>
-                            <label htmlFor="load-create__bodyType">Truck Type</label>
+                            <label htmlFor="bodyType">Truck Type</label>
                         </div>
                         <div className='input__field-wrapper'>
                             <input
                                 name='truckType'
+                                id='bodyType'
                                 className='input__field'
                                 type='text'
                                 placeholder='Truck Type'
                                 value={form.truckType}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                     <div className="submit__item">

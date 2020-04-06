@@ -37,9 +37,9 @@ const ProfileDriver = () => {
                         <div className="driver-profile__description">Here you can check your personal details. Please note that providing up-to-date information is mandatory</div>
                         <div className="driver-profile__list">
                             <div className="driver-profile__characteristic">
-                                <div className="driver-profile__name shipper-profile__element">Name:</div>
-                                <div className="driver-profile__lastname shipper-profile__element">Last Name:</div>
-                                <div className="driver-profile__email shipper-profile__element">Email:</div>
+                                <div className="driver-profile__name driver-profile__element">Name:</div>
+                                <div className="driver-profile__lastname driver-profile__element">Last Name:</div>
+                                <div className="driver-profile__email driver-profile__element">Email:</div>
                             </div>
                             <div className="driver-profile__characteristic">
                                 <div className="driver-profile__item">{profile.firstName}</div>

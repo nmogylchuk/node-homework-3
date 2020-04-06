@@ -43,11 +43,13 @@ const PasswordChange = () => {
                         <div className='input__field-wrapper'>
                             <input
                                 name='oldPassword'
+                                id='oldPassword'
                                 className='input__field'
                                 type='password'
                                 placeholder='Password'
                                 value={form.oldPassword}
-                                onChange={changeHandler} />
+                                onChange={changeHandler}
+                                required />
                         </div>
                     </div>
                 </div>
@@ -59,12 +61,13 @@ const PasswordChange = () => {
                         <div className='input__field-wrapper'>
                             <input
                                 name='newPassword1'
+                                id='newPassword1'
                                 className='input__field'
                                 type='password'
                                 placeholder='New Password'
                                 value={form.newPassword1}
                                 onChange={changeHandler}
-                            />
+                                required />
                         </div>
                     </div>
                 </div>
@@ -76,12 +79,13 @@ const PasswordChange = () => {
                         <div className='input__field-wrapper'>
                             <input
                                 name='newPassword2'
+                                id='newPassword2'
                                 className='input__field'
                                 type='password'
                                 placeholder='Repeat New Password'
                                 value={form.newPassword2}
                                 onChange={changeHandler}
-                            />
+                                required />
                         </div>
                     </div>
                 </div>

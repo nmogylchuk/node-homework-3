@@ -116,11 +116,6 @@ const Load = (props) => {
                         <div className="load__subitem">
                             <div className="load__subname">Load Status</div>
                             <div className="load__element">{load.status}</div>
-                            {/* <select className="load-view__status" value={load.status} onChange={handleStatusOptionChange}>
-                                <option className="load-view__status-green" value="New">New</option>
-                                <option className="load-view__status-orange" value="In Progress">In Progress</option>
-                                <option className="load-view__status-red" value="Done">Done</option>
-                            </select> */}
                         </div>
                     </div>
                     <div className="load__item">

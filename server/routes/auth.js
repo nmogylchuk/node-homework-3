@@ -66,6 +66,7 @@ router.post('/signup', [
         newUser.lastName = lastName;
         newUser.userType = userType;
         newUser.password = await bcrypt.hash(password, 12);
+        console.log("newUser: " + JSON.stringify(newUser));
 
         await newUser.save();
 
