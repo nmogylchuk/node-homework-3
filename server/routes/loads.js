@@ -93,8 +93,8 @@ router.post('/', [
     check('cityTo', 'City To must contain more than 3 symbols').isLength({ min: 3 }),
     check('dateFrom', 'Date From must contain more than 3 symbols').isLength({ min: 3 }),
     check('dateTo', 'Date To must contain more than 3 symbols').isLength({ min: 3 }),
-    check('weight', 'Weight must contain more than 3 symbols').isLength({ min: 3 }),
-    check('volume', 'Volume must contain more than 3 symbols').isLength({ min: 3 }),
+    check('weight', 'Weight must contain more than 1 symbol').isLength({ min: 1 }),
+    check('volume', 'Volume must contain more than 1 symbol').isLength({ min: 1 }),
     check('truckType', 'Truck Type must contain more than 3 symbols').isLength({ min: 3 })
 ], async (req, res) => {
     try {
@@ -126,8 +126,8 @@ router.put('/', [
     check('cityTo', 'City To must contain more than 3 symbols').isLength({ min: 3 }),
     check('dateFrom', 'Date From must contain more than 3 symbols').isLength({ min: 3 }),
     check('dateTo', 'Date To must contain more than 3 symbols').isLength({ min: 3 }),
-    check('weight', 'Weight must contain more than 3 symbols').isLength({ min: 3 }),
-    check('volume', 'Volume must contain more than 3 symbols').isLength({ min: 3 }),
+    check('weight', 'Weight must contain more than 1 symbol').isLength({ min: 1 }),
+    check('volume', 'Volume must contain more than 1 symbol').isLength({ min: 1 }),
     check('truckType', 'Truck Type must contain more than 3 symbols').isLength({ min: 3 })
 ], async (req, res) => {
     try {

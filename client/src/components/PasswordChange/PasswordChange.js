@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useHttp } from '../../hooks/http.hook';
 import { AuthContext } from '../../context/AuthContext';
 import { useHistory } from 'react-router-dom';
+import Error from '../Error/Error';
 
 
 const PasswordChange = () => {
     const history = useHistory();
     const auth = useContext(AuthContext);
-    const { request } = useHttp();
+    const {request, error, clearError} = useHttp();
+    const errorRef = useRef();
     const [form, setForm] = useState({
         oldPassword: '',
         newPassword1: '',
@@ -30,10 +32,16 @@ const PasswordChange = () => {
         }
     };
 
+    useEffect( () => {
+        if(error !== null) {
+            errorRef.current = error;
+        }
+    }, [error, clearError]);
 
     return (
         <div className='driver-password form'>
             <h2 className='form__item driver-password__title title'>Change Password</h2>
+            <Error reference={errorRef} message={error}/>
             <div className='form__wrapper'>
                 <div className='form__item'>
                     <div className='input'>

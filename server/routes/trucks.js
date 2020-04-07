@@ -25,7 +25,7 @@ router.post('/', [
     check('colour', 'Colour must contain more than 3 symbols').isLength({ min: 3 }),
     check('gearbox', 'Geabox must contain more than 3 symbols').isLength({ min: 3 }),
     check('engine', 'Engine must contain more than 3 symbols').isLength({ min: 3 }),
-    check('mileage', 'Mileage must contain more than 3 symbols').isLength({ min: 3 })
+    check('mileage', 'Mileage must contain more than 1 symbol').isLength({ min: 1 })
 ], async (req, res) => {
     try {
         const errors = validationResult(req);
@@ -55,7 +55,7 @@ router.put('/', [
     check('colour', 'Colour must contain more than 3 symbols').isLength({ min: 3 }),
     check('gearbox', 'Geabox must contain more than 3 symbols').isLength({ min: 3 }),
     check('engine', 'Engine must contain more than 3 symbols').isLength({ min: 3 }),
-    check('mileage', 'Mileage must contain more than 3 symbols').isLength({ min: 3 })
+    check('mileage', 'Mileage must contain more than 1 symbol').isLength({ min: 1 })
 ], async (req, res) => {
     try {
         const errors = validationResult(req);

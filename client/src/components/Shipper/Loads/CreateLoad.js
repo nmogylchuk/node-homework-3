@@ -1,13 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { useHttp } from '../../../hooks/http.hook';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthContext';
+import Error from '../../Error/Error';
 
 const ShipperCreateLoad = (props) => {
 
     const history = useHistory();
     const auth = useContext(AuthContext);
-    const { request } = useHttp();
+    const {request, error, clearError} = useHttp();
+    const errorRef = useRef();
     const [form, setForm] = useState({
         loadName: '',
         countryFrom: '',
@@ -37,9 +39,16 @@ const ShipperCreateLoad = (props) => {
         };
     };
 
+    useEffect( () => {
+        if(error !== null) {
+            errorRef.current = error;
+        }
+    }, [error, clearError]);
+
     return (
         <div className='load-create form'>
             <h2 className='form__item load-create__title title'>Create Load</h2>
+            <Error reference={errorRef} message={error}/>
             <div className='form__wrapper'>
                 <div className='form__item'>
                     <div className='input'>
